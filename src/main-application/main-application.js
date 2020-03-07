@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit-element';
 
+// TODO use typescript
+
 export class MainApplication extends LitElement {
 
   constructor() {
