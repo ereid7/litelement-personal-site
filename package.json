@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.4.2",
+    "lit-element": "^2.2.1",
+    "webcomponents": "^0.1.4"
+  }
+}

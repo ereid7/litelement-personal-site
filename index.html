@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>  
+  <title>LitElement 1st Steps</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  
+  <!-- Load polyfills -->
+  <script 
+    src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
+    defer>
+  </script> 
+
+  <!-- Load components via WebComponents.waitFor -->
+  <script type="module">
+    window.WebComponents = window.WebComponents || { 
+      waitFor(cb){ addEventListener('WebComponentsReady', cb) }
+    } 
+    WebComponents.waitFor(async () => { 
+      import('./src/main-application/main-application.js');
+      import('./src/sidebar/sidebar.js');
+    });
+  </script>
+</head>
+  <body>  
+    <side-bar></side-bar>
+    <main-application>
+
+      <noscript>
+        Could not render the custom element. Check that JavaScript is enabled.
+      </noscript>
+    </main-application>
+  </body>
+</html>
