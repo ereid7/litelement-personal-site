@@ -57,6 +57,8 @@ export class Sidebar extends LitElement {
       
       @media screen and (max-width: 700px) {
         .sidebar {
+          border-right: 0px;
+          border-bottom: 1px solid;
           width: 100%;
           height: auto;
           position: relative;

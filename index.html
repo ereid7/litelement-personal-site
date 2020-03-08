@@ -19,19 +19,19 @@
       waitFor(cb){ addEventListener('WebComponentsReady', cb) }
     } 
     WebComponents.waitFor(async () => { 
-      import('./src/main-application/main-application.js');
+      import('./src/components/main/about-me.js');
       import('./src/components/sidebar/sidebar.js');
-      import('./src/components/toggle-button/toggle-button.js');
+      import('./src/components/sidebar/toggle-button.js');
+      import('./src/components/main/main-page.js');
     });
   </script>
 </head>
   <body style="margin: 0">  
     <side-bar></side-bar>
-    <!-- <main-application>
-
-      <noscript>
-        Could not render the custom element. Check that JavaScript is enabled.
-      </noscript>
-    </main-application> -->
+    <main-page></main-page>
+    
+    <noscript>
+      Could not render the custom element. Check that JavaScript is enabled.
+    </noscript>
   </body>
 </html>
