@@ -1,13 +1,55 @@
 import { LitElement, html, css } from 'lit-element';
+import { router } from "lit-element-router";
 
 // TODO use typescript
 // TODO custom scrollbar
+export class MainPage extends router(LitElement) {
 
-export class MainPage extends LitElement {
+  static get properties() {
+    return {
+      route: { type: String },
+      params: { type: Object },
+      query: { type: Object },
+      data: { type: Object }
+    };
+  }
+
+  static get routes() {
+    return [
+      {
+        name: "aboutme",
+        pattern: "/aboutme",
+      },
+      {
+        name: "resume",
+        pattern: "/resume"
+      },
+      {
+        name: "aboutme",
+        pattern: "*"
+      }
+    ];
+  }
+
+  constructor() {
+    super();
+    this.route = "";
+    this.params = {};
+    this.query = {};
+    this.data = {};
+  }
+
+  router(route, params, query, data) {
+    this.route = route;
+    this.params = params;
+    this.query = query;
+    this.data = data;
+    console.log(route, params, query, data);
+  }
 
   static get styles() {
     return css`
-      div {
+      router-outlet {
         margin: 0;
         position: absolute;
         left: 240px;
@@ -15,7 +57,7 @@ export class MainPage extends LitElement {
       }
 
       @media screen and (max-width: 700px) {
-        div {
+        router-outlet {
           margin: 0;
           position: absolute;
           left: 0px;
@@ -25,15 +67,12 @@ export class MainPage extends LitElement {
     `;
   }
 
-  constructor() {
-    super()
-  }
-
   render() {
     return html`
-      <div class="main-page">
-        <about-me></about-me>
-      </div>
+      <router-outlet active-route=${this.route}>
+        <about-me route="aboutme"></about-me>
+        <resume-page route="resume"></resume-page>
+      </router-outlet>
     `
   }
 }

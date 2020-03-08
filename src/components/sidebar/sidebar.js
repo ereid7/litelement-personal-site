@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
+import { navigator } from "lit-element-router";
 
-export class Sidebar extends LitElement {
+export class Sidebar extends navigator(LitElement) {
 
   static get styles() {
     return css`
@@ -93,9 +94,9 @@ export class Sidebar extends LitElement {
       <div class="sidebar">
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a class="active" href="#home">About Me</a>
-        <a class="active" href="#home">Resume</a>
-        <a class="active" href="#home">Projects</a>
+        <a class="active" href="/aboutme" @click="${this.aboutMe}">About Me</a>
+        <a class="active" href="/resume" @click="${this.resume}">Resume</a>
+        <a class="active" href="/aboutme">Projects</a>
         
         <hr />
         <div class="iconBar">
@@ -105,6 +106,16 @@ export class Sidebar extends LitElement {
         <toggle-button />
       </div>
     `
+  }
+
+  aboutMe(event) {
+    event.preventDefault();
+    this.navigate('/aboutMe');
+  }
+
+  resume(event) {
+    event.preventDefault();
+    this.navigate('/resume');
   }
 }
 
