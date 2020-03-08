@@ -1,8 +1,8 @@
 {
   "dependencies": {
+    "@vaadin/router": "^1.7.1",
     "@webcomponents/webcomponentsjs": "^2.4.2",
     "lit-element": "^2.2.1",
-    "lit-element-router": "^2.0.0-rc.16",
     "webcomponents": "^0.1.4"
   }
 }

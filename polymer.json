@@ -4,7 +4,7 @@
   "fragments": [],
   "npm": true,
   "moduleResolution": "node",
-  "sources": ["src/main-application.js", "package.json"],
+  "sources": ["src/app.js", "package.json"],
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/**"
   ],

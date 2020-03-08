@@ -11,7 +11,8 @@
   <script 
     src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
     defer>
-  </script> 
+  </script>
+  <link rel="stylesheet" type="text/css" href="index.css">
 
   <!-- Load components via WebComponents.waitFor -->
   <script type="module">
@@ -23,15 +24,14 @@
       import('./src/components/main/resume.js');
       import('./src/components/sidebar/sidebar.js');
       import('./src/components/sidebar/toggle-button.js');
-      import('./src/components/main/main-page.js');
-      import('./src/components/main/router-outlet.js');
     });
   </script>
 </head>
   <body style="margin: 0">  
     <side-bar></side-bar>
-    <main-page></main-page>
-    
+    <output class="outlet"></output>>
+
+    <script src="app.js" type="module"></script>
     <noscript>
       Could not render the custom element. Check that JavaScript is enabled.
     </noscript>

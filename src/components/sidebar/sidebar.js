@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { navigator } from "lit-element-router";
 
-export class Sidebar extends navigator(LitElement) {
+export class Sidebar extends LitElement {
 
   static get styles() {
     return css`
@@ -110,9 +110,9 @@ export class Sidebar extends navigator(LitElement) {
       <div class="sidebar">
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a  href="/aboutme" @click="${this.aboutMe}">About Me</a>
-        <a  href="/resume" @click="${this.resume}">Resume</a>
-        <a  href="/aboutme">Projects</a>
+        <a href="/aboutme"> About Me</a>
+        <a href="/resume">Resume</a>
+        <a href="/aboutme">Projects</a>
         
         <hr />
         <div class="iconBar">
@@ -123,7 +123,6 @@ export class Sidebar extends navigator(LitElement) {
       </div>
     `
   }
-
 
   // TODO create single event for navigation (see lit-router example)
   // use this to add selected styling to sidebar buttons
