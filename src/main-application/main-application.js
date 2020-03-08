@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit-element';
 
 // TODO use typescript
+// TODO custom scrollbar
 
 export class MainApplication extends LitElement {
 
