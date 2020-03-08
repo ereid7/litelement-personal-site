@@ -44,7 +44,6 @@ export class MainPage extends router(LitElement) {
     this.params = params;
     this.query = query;
     this.data = data;
-    console.log(route, params, query, data);
   }
 
   static get styles() {

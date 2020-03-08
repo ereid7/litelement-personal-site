@@ -21,11 +21,12 @@ export class Sidebar extends navigator(LitElement) {
       
       .sidebar a {
         display: block;
-        color: black;
+        color: #3C4146;
         padding: 5px;
         margin: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
+        border-radius: 10px;
         text-align: center;
         text-decoration: none;
       }
@@ -64,9 +65,24 @@ export class Sidebar extends navigator(LitElement) {
           height: auto;
           position: relative;
         }
-        .sidebar a {float: none; text-align: center;}
-        .sidebarheader {float: none; text-align: center;}
+        .sidebar a {
+          float: none; 
+          text-align: center;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+        .sidebarheader {
+          margin-top: -60px;
+          visibility: hidden;
+        }
         div.content {margin-left: 0;}
+        hr {
+          visibility: hidden;
+        }
+        .iconBar {
+          margin-bottom: -80px;
+          visibility: hidden;
+        }
       }
 
       .iconBar {
@@ -94,20 +110,23 @@ export class Sidebar extends navigator(LitElement) {
       <div class="sidebar">
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a class="active" href="/aboutme" @click="${this.aboutMe}">About Me</a>
-        <a class="active" href="/resume" @click="${this.resume}">Resume</a>
-        <a class="active" href="/aboutme">Projects</a>
+        <a  href="/aboutme" @click="${this.aboutMe}">About Me</a>
+        <a  href="/resume" @click="${this.resume}">Resume</a>
+        <a  href="/aboutme">Projects</a>
         
         <hr />
         <div class="iconBar">
           <img class="siteIcons" src="../../resources/icons/github.svg" ></img>
           <img class="siteIcons" src="../../resources/icons/linkedin.svg" ></img>
         </div>
-        <toggle-button />
+        <toggle-button class="toggleButton" @dark="${(e) => { console.log(e) }}" > </toggle-button>
       </div>
     `
   }
 
+
+  // TODO create single event for navigation (see lit-router example)
+  // use this to add selected styling to sidebar buttons
   aboutMe(event) {
     event.preventDefault();
     this.navigate('/aboutMe');
