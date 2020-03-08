@@ -1,7 +1,15 @@
 import { LitElement, html, css } from 'lit-element';
-import { navigator } from "lit-element-router";
+import { classMap } from 'lit-html/directives/class-map';
 
 export class Sidebar extends LitElement {
+
+  static get properties() {
+     return {
+       aboutMe: { type: Object },
+       resume: { type: Object },
+       projects: { type: Object }
+     };
+   }
 
   static get styles() {
     return css`
@@ -18,7 +26,7 @@ export class Sidebar extends LitElement {
         height: 100%;
         overflow: auto;
       }
-      
+
       .sidebar a {
         display: block;
         color: #3C4146;
@@ -36,6 +44,7 @@ export class Sidebar extends LitElement {
         color: #3C4146;
         padding: 5px;
         margin: 10px;
+        margin-top: 30px;
         font-size: 20px;
         text-align: center;
         text-decoration: none;
@@ -46,41 +55,41 @@ export class Sidebar extends LitElement {
         margin-top: 20px;
         margin-bottom: 20px;
       }
-       
+
       .sidebar a.active {
-        background-color: #B6BFC9;
-        color: #3C4146;
-      }
-      
-      .sidebar a:hover:not(.active) {
         background-color: #555;
         color: white;
       }
-      
+
+      .sidebar a:hover:not(.active) {
+        background-color: #B9B9BB;
+      }
+
       @media screen and (max-width: 700px) {
         .sidebar {
           border-right: 0px;
           border-bottom: 1px solid;
           width: 100%;
-          height: auto;
+          height: 135px;
           position: relative;
         }
         .sidebar a {
-          float: none; 
+          float: none;
           text-align: center;
-          margin-top: 2px;
-          margin-bottom: 2px;
+          margin-top: 4px;
+          margin-bottom: 4px;
         }
         .sidebarheader {
-          margin-top: -60px;
+          position:absolute;
           visibility: hidden;
         }
         div.content {margin-left: 0;}
         hr {
+          position:absolute;
           visibility: hidden;
         }
         .iconBar {
-          margin-bottom: -80px;
+          position:absolute;
           visibility: hidden;
         }
       }
@@ -101,8 +110,24 @@ export class Sidebar extends LitElement {
     `;
   }
 
+
   constructor() {
     super()
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    let url = window.location.href;
+    this.aboutMe = { active: url.endsWith("aboutme") },
+    this.resume = { active: url.endsWith("resume") },
+    this.projects = { active: url.endsWith("projects") }
+  }
+
+  onClick(event) {
+    let activePage = event.explicitOriginalTarget.id;
+    this.aboutMe = { active: activePage === "aboutme" };
+    this.resume = { active: activePage === "resume" };
+    this.projects = { active: activePage === "projects" };
   }
 
   render() {
@@ -110,10 +135,10 @@ export class Sidebar extends LitElement {
       <div class="sidebar">
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a href="/aboutme"> About Me</a>
-        <a href="/resume">Resume</a>
-        <a href="/aboutme">Projects</a>
-        
+        <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)} href="/aboutme">About Me</a>
+        <a id="resume" @click=${this.onClick} class=${classMap(this.resume)} href="/resume">Resume</a>
+        <a id="projects" @click=${this.onClick} class=${classMap(this.projects)} href="/aboutme">Projects</a>
+
         <hr />
         <div class="iconBar">
           <img class="siteIcons" src="../../resources/icons/github.svg" ></img>
@@ -122,18 +147,6 @@ export class Sidebar extends LitElement {
         <toggle-button class="toggleButton" @dark="${(e) => { console.log(e) }}" > </toggle-button>
       </div>
     `
-  }
-
-  // TODO create single event for navigation (see lit-router example)
-  // use this to add selected styling to sidebar buttons
-  aboutMe(event) {
-    event.preventDefault();
-    this.navigate('/aboutMe');
-  }
-
-  resume(event) {
-    event.preventDefault();
-    this.navigate('/resume');
   }
 }
 

@@ -25,9 +25,8 @@ export class ToggleButton extends LitElement {
 
       @media screen and (max-width: 700px) {
         div {
+          margin-top: 10px;
           position: static;
-          margin: 10px;
-          margin-top: 25px;
         }
       }
     `;

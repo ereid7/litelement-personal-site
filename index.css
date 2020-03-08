@@ -6,11 +6,11 @@
   margin-left: 5vw;
 }
 
-      @media screen and (max-width: 700px) {
-        .outlset {
-          margin: 0;
-          position: absolute;
-          left: 0px;
-          margin-left: 5vw;
-        }
-      }
+@media screen and (max-width: 700px) {
+  .outlet {
+    margin: 0;
+    position: absolute;
+    left: 0px;
+    margin-left: 5vw;
+  }
+}
