@@ -6,6 +6,10 @@
   margin-left: 5vw;
 }
 
+.dark {
+  background-color: #1E1E1E;
+}
+
 @media screen and (max-width: 700px) {
   .outlet {
     margin: 0;

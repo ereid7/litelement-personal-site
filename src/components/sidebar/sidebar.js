@@ -133,7 +133,8 @@ export class Sidebar extends LitElement {
   }
 
   themeChanged(e) {
-    console.log(e.type);
+    let event = new Event(e.type);
+    this.dispatchEvent(event);
   }
 
   render() {
