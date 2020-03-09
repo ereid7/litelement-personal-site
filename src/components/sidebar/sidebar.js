@@ -14,7 +14,7 @@ export class Sidebar extends LitElement {
   static get styles() {
     return css`
       .sidebar {
-        font-family: Helvetica;
+        font-family: Courier;
         border-right: 1px solid;
         border-color: #D6D9DC;
         margin: 0;
@@ -54,6 +54,8 @@ export class Sidebar extends LitElement {
         margin: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
+        color: #D6D9DC;
+        backgorund-color: #D6D9DC;
       }
 
       .sidebar a.active {
@@ -69,6 +71,7 @@ export class Sidebar extends LitElement {
         .sidebar {
           border-right: 0px;
           border-bottom: 1px solid;
+          border-color: #D6D9DC;
           width: 100%;
           height: 135px;
           position: relative;
@@ -110,7 +113,6 @@ export class Sidebar extends LitElement {
     `;
   }
 
-
   constructor() {
     super()
   }
@@ -130,6 +132,10 @@ export class Sidebar extends LitElement {
     this.projects = { active: activePage === "projects" };
   }
 
+  themeChanged(e) {
+    console.log(e.type);
+  }
+
   render() {
     return html`
       <div class="sidebar">
@@ -138,13 +144,16 @@ export class Sidebar extends LitElement {
         <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)} href="/aboutme">About Me</a>
         <a id="resume" @click=${this.onClick} class=${classMap(this.resume)} href="/resume">Resume</a>
         <a id="projects" @click=${this.onClick} class=${classMap(this.projects)} href="/aboutme">Projects</a>
-
         <hr />
         <div class="iconBar">
           <img class="siteIcons" src="../../resources/icons/github.svg" ></img>
           <img class="siteIcons" src="../../resources/icons/linkedin.svg" ></img>
         </div>
-        <toggle-button class="toggleButton" @dark="${(e) => { console.log(e) }}" > </toggle-button>
+        <toggle-button 
+          class="toggleButton" 
+          @darkMode="${(e) => { this.themeChanged(e) }}"
+          @lightMode="${(e) => { this.themeChanged(e) }}"> 
+        </toggle-button>
       </div>
     `
   }

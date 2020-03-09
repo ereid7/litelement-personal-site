@@ -9,26 +9,80 @@ export class ToggleButton extends LitElement {
   }
 
   static get styles() {
+    // toggle button styles from:
+    // https://www.cssscript.com/realistic-ios-switch-pure-css/
     return css`
-      div {
-        text-align: center;
-        display: block;
-        color: #3C4146;
-        position: absolute;
-        left: 42px;
-        bottom: 20px;
-      }
 
-      input {
-        color: #3C4146;
-      }
+    .form-switch {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      display: inline-block
+      text-align: center
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .form-switch i {
+      position: relative;
+      display: inline-block;
+      margin-right: .5rem;
+      width: 46px;
+      height: 26px;
+      background-color: #e6e6e6;
+      border-radius: 23px;
+      vertical-align: text-bottom;
+      transition: all 0.3s linear;
+    }
+    
+    .form-switch i::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 42px;
+      height: 22px;
+      background-color: #fff;
+      border-radius: 11px;
+      transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+      transition: all 0.25s linear;
+    }
+    
+    .form-switch i::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      background-color: #fff;
+      border-radius: 11px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+      transform: translate3d(2px, 2px, 0);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .form-switch:active i::after {
+      width: 28px;
+      transform: translate3d(2px, 2px, 0);
+    }
 
-      @media screen and (max-width: 700px) {
-        div {
-          margin-top: 10px;
-          position: static;
-        }
+    @media screen and (max-width: 700px) {
+      .form-switch {
+        display: absolute;
+        margin-top: -20px;
+        bottom: 5px;
+        left: 10px;
       }
+    }
+    
+    .form-switch:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
+    
+    .form-switch input { display: none; }
+    
+    .form-switch input:checked + i { background-color: #3C4146;; }
+    
+    .form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+    
+    .form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
     `;
   }
 
@@ -37,18 +91,20 @@ export class ToggleButton extends LitElement {
   }
 
   onChange(e) {
-    let toggleDark = new Event ('dark');
-    this.dispatchEvent(toggleDark);
+    let oldVal = this.isDark;
+    this.isDark = e.target.checked;
+    this.requestUpdate('isDark', oldVal);
+    let event = this.isDark ? new Event('darkMode') : new Event('lightMode');
+    this.dispatchEvent(event);
   }
-
 
   render() {
     return html`
     <div className="toggleButton"> 
-      light
-      <input @change="${this.onChange}" type="radio" checked="checked" name="radio" value="light">
-      <input type="radio" name="radio" value="dark">
-      dark
+      <label class="form-switch">
+        <input id="darkMode" @change="${this.onChange}" type="checkbox">
+        <i></i></label>
+      </body>
     </div> 
     `
   }
