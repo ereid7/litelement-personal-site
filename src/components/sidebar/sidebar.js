@@ -4,12 +4,14 @@ import { classMap } from 'lit-html/directives/class-map';
 export class Sidebar extends LitElement {
 
   static get properties() {
-     return {
-       aboutMe: { type: Object },
-       resume: { type: Object },
-       projects: { type: Object }
-     };
-   }
+    return {
+      isDark: { type: Boolean },
+      aboutMe: { type: Object },
+      resume: { type: Object },
+      projects: { type: Object },
+      sideBarMap: { type: Object }
+    };
+  }
 
   static get styles() {
     return css`
@@ -27,6 +29,11 @@ export class Sidebar extends LitElement {
         overflow: auto;
       }
 
+      .sidebarDark {
+        border-color: #444444;
+        background-color: #323234;
+      }
+
       .sidebar a {
         display: block;
         color: #3C4146;
@@ -39,7 +46,11 @@ export class Sidebar extends LitElement {
         text-decoration: none;
       }
 
-      .sidebarheader {
+      .sidebarDark a {
+        color: #B1B1B2;
+      }
+
+      .sidebar p {
         display: block;
         color: #3C4146;
         padding: 5px;
@@ -50,18 +61,34 @@ export class Sidebar extends LitElement {
         text-decoration: none;
       }
 
-      hr {
+      .sidebarDark p {
+        color: #B1B1B2;
+      }
+
+      .sidebar hr {
         margin: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
-        color: #D6D9DC;
-        backgorund-color: #D6D9DC;
+        border: 1px solid;
+        border-color: #D6D9DC;
+      }
+
+      .sidebarDark hr {
+        border-color: #444444;
+      }
+
+      .sidebarDark a:hover:not(.active) {
+        background-color: #B9B9BB;
       }
 
       .sidebar a.active {
-        background-color: #555;
-        color: white;
+        background-color: #abd1de;
       }
+
+      .sidebarDark a.active {
+        background-color: #42526C;
+      }
+
 
       .sidebar a:hover:not(.active) {
         background-color: #B9B9BB;
@@ -73,14 +100,17 @@ export class Sidebar extends LitElement {
           border-bottom: 1px solid;
           border-color: #D6D9DC;
           width: 100%;
-          height: 135px;
+          height: 140px;
           position: relative;
+        }
+        .sidebarDark {
+          border-color: #444444;
         }
         .sidebar a {
           float: none;
           text-align: center;
-          margin-top: 4px;
-          margin-bottom: 4px;
+          margin-top: 6px;
+          margin-bottom: 6px;
         }
         .sidebarheader {
           position:absolute;
@@ -101,20 +131,23 @@ export class Sidebar extends LitElement {
         text-align: center;
       }
 
-      .siteIcons {
+      .sidebar img {
         width: 25px;
         margin-left: 10px;
         margin-right: 10px;
+        cursor: pointer;
+        filter: invert(79%) sepia(29%) saturate(261%) hue-rotate(149deg) brightness(92%) contrast(84%);    
       }
 
-      .siteIcons {
-        filter: invert(24%) sepia(19%) saturate(245%) hue-rotate(169deg) brightness(92%) contrast(90%);
+      .sidebarDark img {
+        filter: invert(29%) sepia(22%) saturate(683%) hue-rotate(178deg) brightness(97%) contrast(92%);
       }
-    `;
+  `
   }
 
   constructor() {
     super()
+    this.isDark = false;
   }
 
   connectedCallback() {
@@ -123,9 +156,11 @@ export class Sidebar extends LitElement {
     this.aboutMe = { active: url.endsWith("aboutme") },
     this.resume = { active: url.endsWith("resume") },
     this.projects = { active: url.endsWith("projects") }
+    this.sideBarMap = { sidebar: true, sidebarDark: false }
   }
 
   onClick(event) {
+    // have to set whole object or use requestupdate
     let activePage = event.explicitOriginalTarget.id;
     this.aboutMe = { active: activePage === "aboutme" };
     this.resume = { active: activePage === "resume" };
@@ -133,13 +168,14 @@ export class Sidebar extends LitElement {
   }
 
   themeChanged(e) {
-    let event = new Event(e.type);
-    this.dispatchEvent(event);
+    this.isDark = e.type == "darkMode";
+    this.sideBarMap = { sidebar: true, sidebarDark: this.isDark }
+    this.dispatchEvent(new Event(e.type));
   }
 
   render() {
     return html`
-      <div class="sidebar">
+      <div class=${classMap(this.sideBarMap)}>
         <p class="sidebarheader">Evan Reid</p>
         <hr />
         <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)} href="/aboutme">About Me</a>
