@@ -61,7 +61,7 @@ export class ToggleButton extends LitElement {
         width: 28px;
         transform: translate3d(2px, 2px, 0);
       }
-      @media screen and (max-width: 700px) {
+      @media screen and (max-width: 900px) {
         .form-switch {
           position: static;
           margin-left: 2px;

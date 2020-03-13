@@ -4,10 +4,11 @@ export class Resume extends LitElement {
 
   static get styles() {
     return css`
-      div {
-        margin: 0;
-        position: relative;
-      }
+    .body {
+      display: inline-block;
+      width: 620px;
+      overflow-wrap: normal;
+    }
     `;
   }
 
@@ -18,7 +19,9 @@ export class Resume extends LitElement {
   render() {
     return html`
       <div class="resume"> 
-         <h2>Resume</h2>
+        <div class="body">
+          <h2>Resume</h2>
+        </div>
       </div>
     `
   }

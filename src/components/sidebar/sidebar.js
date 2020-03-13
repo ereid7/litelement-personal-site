@@ -13,11 +13,13 @@ export class Sidebar extends LitElement {
     };
   }
 
+  // TODO capture diagnostics
+  // TODO set cookie with style setting
   static get styles() {
     return css`
       .sidebar {
-        font-family: Courier;
-        border-right: 1px solid;
+        font-family: Roboto Mono, monospace;
+        border-right: 2px solid;
         border-color: #D6D9DC;
         margin: 0;
         padding: 0;
@@ -39,8 +41,8 @@ export class Sidebar extends LitElement {
         color: #3C4146;
         padding: 5px;
         margin: 10px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 30px;
+        margin-bottom: 30px;
         border-radius: 10px;
         text-align: center;
         text-decoration: none;
@@ -94,13 +96,13 @@ export class Sidebar extends LitElement {
         background-color: #B9B9BB;
       }
 
-      @media screen and (max-width: 700px) {
+      @media screen and (max-width: 900px) {
         .sidebar {
           border-right: 0px;
-          border-bottom: 1px solid;
+          border-bottom: 2px solid;
           border-color: #D6D9DC;
           width: 100%;
-          height: 140px;
+          height: 150px;
           position: relative;
         }
         .sidebarDark {

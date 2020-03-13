@@ -1,20 +1,27 @@
 
 .outlet {
-  margin: 0;
-  position: absolute;
-  left: 240px;
-  margin-left: 5vw;
+  text-align: center;
 }
 
 .dark {
   background-color: #1E1E1E;
+  color: red;
 }
 
-@media screen and (max-width: 700px) {
+.dark div {
+  color: red;
+}
+
+.dark about-me {
+  color: red;
+}
+
+.dark about-me div {
+  color: red;
+}
+
+@media screen and (max-width: 900px) {
   .outlet {
-    margin: 0;
-    position: absolute;
     left: 0px;
-    margin-left: 5vw;
   }
 }

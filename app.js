@@ -9,11 +9,13 @@ sideBar.addEventListener('darkMode', (e) => {
   console.log(e);
   //outlet.classList.add("dark");
   body.classList.add("dark");
+  outlet.classList.add("dark");
 });
 sideBar.addEventListener('lightMode', (e) => {
   console.log(e);
   //outlet.classList.add("dark");
   body.classList.remove("dark");
+  outlet.classList.add("dark");
 });
 const router = new Router(outlet);
 
