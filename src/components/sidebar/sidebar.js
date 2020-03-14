@@ -91,7 +91,6 @@ export class Sidebar extends LitElement {
         background-color: #42526C;
       }
 
-
       .sidebar a:hover:not(.active) {
         background-color: #B9B9BB;
       }

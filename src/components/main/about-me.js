@@ -30,15 +30,15 @@ export class AboutMe extends LitElement {
         color: #abd1de;
         margin-left: 2px;
       }
-
-      .dark {
-        color: red;
-      }
     `;
   }
 
   constructor() {
     super()
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   render() {

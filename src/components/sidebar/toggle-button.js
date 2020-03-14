@@ -83,7 +83,12 @@ export class ToggleButton extends LitElement {
     let oldVal = this.isDark;
     this.isDark = e.target.checked;
     this.requestUpdate('isDark', oldVal);
-    let event = this.isDark ? new Event('darkMode') : new Event('lightMode');
+    let event = this.isDark 
+      ? new CustomEvent('darkMode', {
+        bubbles: true,
+        composed: true
+      }) 
+      : new CustomEvent('lightMode');
     this.dispatchEvent(event);
   }
 

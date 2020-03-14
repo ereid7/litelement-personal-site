@@ -5,23 +5,39 @@
 
 .dark {
   background-color: #1E1E1E;
-  color: red;
 }
 
-.dark div {
-  color: red;
+.body {
+  font-family: Roboto Mono, monospace;
+  color: #3C4146;
+  display: inline-block;
+  margin-top: 40px;
+  width: 600px;
+  text-align: left;
+  overflow-wrap: normal;
 }
 
-.dark about-me {
-  color: red;
+.subHeader {
+  color: #abd1de;
+  margin-left: 2px;
 }
 
-.dark about-me div {
-  color: red;
+.dark .body {
+  color: #B1B1B2;
+}
+
+.dark .subHeader {
+  color: #42526C;
 }
 
 @media screen and (max-width: 900px) {
   .outlet {
     left: 0px;
+  }
+  .body {
+    width: auto;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
