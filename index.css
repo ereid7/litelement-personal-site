@@ -3,23 +3,69 @@
   text-align: center;
 }
 
+body {
+  -webkit-transition: background-color .15s ease;
+  -ms-transition: background-color .15s ease;
+  transition: background-color .15s ease;
+}
+
 .dark {
   background-color: #1E1E1E;
 }
 
 .body {
-  font-family: Roboto Mono, monospace;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 90vh;
   color: #3C4146;
   display: inline-block;
   margin-top: 40px;
   width: 600px;
   text-align: left;
   overflow-wrap: normal;
+
+  -webkit-transition: background-color .15s ease;
+  -ms-transition: background-color .15s ease;
+  transition: background-color .15s ease;
+}
+
+p {
+  font-size: 16px;
 }
 
 .subHeader {
   color: #abd1de;
   margin-left: 2px;
+
+  -webkit-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+a {
+  color: #629AB3;
+
+  -webkit-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  transition: color .15s ease;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid;
+  border-color: #D6D9DC;
+
+  -webkit-transition: border-color .15s ease;
+  -ms-transition: border-color .15s ease;
+  transition: border-color .15s ease;
+}
+
+.dark a {
+  color: #6A80A4;
+}
+
+.dark hr {
+  border-color: #444444;
 }
 
 .dark .body {
@@ -30,12 +76,13 @@
   color: #42526C;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
   .outlet {
     left: 0px;
   }
   .body {
     width: auto;
+    max-width: 600px;
     margin-top: 0px;
     margin-left: 20px;
     margin-right: 20px;

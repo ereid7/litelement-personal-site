@@ -13,12 +13,13 @@ export class Sidebar extends LitElement {
     };
   }
 
+  // TODO update hover colors
   // TODO capture diagnostics
   // TODO set cookie with style setting
   static get styles() {
     return css`
       .sidebar {
-        font-family: Roboto Mono, monospace;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         border-right: 2px solid;
         border-color: #D6D9DC;
         margin: 0;
@@ -29,6 +30,10 @@ export class Sidebar extends LitElement {
         position: fixed;
         height: 100%;
         overflow: auto;
+
+        -webkit-transition: all .15s ease, width 0, height 0;
+        -ms-transition: all.15s ease, width 0, height 0;
+        transition: all .15s ease, width 0, height 0;
       }
 
       .sidebarDark {
@@ -46,6 +51,10 @@ export class Sidebar extends LitElement {
         border-radius: 10px;
         text-align: center;
         text-decoration: none;
+
+        -webkit-transition: color .15s ease;
+        -ms-transition: color .15s ease;
+        transition: color .15s ease;
       }
 
       .sidebarDark a {
@@ -61,6 +70,10 @@ export class Sidebar extends LitElement {
         font-size: 20px;
         text-align: center;
         text-decoration: none;
+
+        -webkit-transition: color .15s ease;
+        -ms-transition: color .15s ease;
+        transition: color .15s ease;
       }
 
       .sidebarDark p {
@@ -73,6 +86,10 @@ export class Sidebar extends LitElement {
         margin-bottom: 20px;
         border: 1px solid;
         border-color: #D6D9DC;
+
+        -webkit-transition: border-color .15s ease;
+        -ms-transition: border-color .15s ease;
+        transition: border-color .15s ease;
       }
 
       .sidebarDark hr {
@@ -95,7 +112,7 @@ export class Sidebar extends LitElement {
         background-color: #B9B9BB;
       }
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1100px) {
         .sidebar {
           border-right: 0px;
           border-bottom: 2px solid;
@@ -138,10 +155,18 @@ export class Sidebar extends LitElement {
         margin-right: 10px;
         cursor: pointer;
         filter: invert(79%) sepia(29%) saturate(261%) hue-rotate(149deg) brightness(92%) contrast(84%);    
+
+        -webkit-transition: filter .15s ease;
+        -ms-transition: filter .15s ease;
+        transition: filter .15s ease;
       }
 
       .sidebarDark img {
         filter: invert(29%) sepia(22%) saturate(683%) hue-rotate(178deg) brightness(97%) contrast(92%);
+
+        -webkit-transition: filter .15s ease;
+        -ms-transition: filter .15s ease;
+        transition: filter .15s ease;
       }
   `
   }
@@ -189,8 +214,8 @@ export class Sidebar extends LitElement {
         </div>
         <toggle-button 
           class="toggleButton" 
-          @darkMode="${(e) => { this.themeChanged(e) }}"
-          @lightMode="${(e) => { this.themeChanged(e) }}"> 
+          @darkMode="${ this.themeChanged }"
+          @lightMode="${ this.themeChanged }"> 
         </toggle-button>
       </div>
     `

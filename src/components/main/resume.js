@@ -4,11 +4,6 @@ export class Resume extends LitElement {
 
   static get styles() {
     return css`
-    .body {
-      display: inline-block;
-      width: 620px;
-      overflow-wrap: normal;
-    }
     `;
   }
 
@@ -16,13 +11,23 @@ export class Resume extends LitElement {
     super()
   }
 
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
-      <div class="resume"> 
-        <div class="body">
-          <h2>Resume</h2>
-        </div>
+    <div class="resume">
+      <div class="body">
+        <h1 class="header">Resume</h1>
+        <h4 class="subHeader">human</h4>
+            <p>Recent graduate from University of Wisconsin Stout 
+              with a B.S in Applied Math and Computer Science.
+              Currently starting my career as an Associate Software Engineer at Nuvasive, San Diego CA.</p>
+            <p>I consider myself to be a critical thinker with a big heart.</p>
+            <p>My interests include reading, software, and chihuahua meetups.</p>
       </div>
+    </div>
     `
   }
 }

@@ -61,7 +61,7 @@ export class ToggleButton extends LitElement {
         width: 28px;
         transform: translate3d(2px, 2px, 0);
       }
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1100px) {
         .form-switch {
           position: static;
           margin-left: 2px;
@@ -84,11 +84,8 @@ export class ToggleButton extends LitElement {
     this.isDark = e.target.checked;
     this.requestUpdate('isDark', oldVal);
     let event = this.isDark 
-      ? new CustomEvent('darkMode', {
-        bubbles: true,
-        composed: true
-      }) 
-      : new CustomEvent('lightMode');
+      ? new Event('darkMode') 
+      : new Event('lightMode');
     this.dispatchEvent(event);
   }
 
@@ -96,7 +93,7 @@ export class ToggleButton extends LitElement {
     return html`
       <div className="toggleButton"> 
         <label class="form-switch">
-          <input id="darkMode" @change="${this.onChange}" type="checkbox">
+          <input id="darkMode" @change="${ this.onChange }" type="checkbox">
           <i></i></label>
         </body>
       </div> 
