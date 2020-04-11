@@ -55,11 +55,7 @@ export class Sidebar extends LitElement {
         -webkit-transition: color .15s ease;
         -ms-transition: color .15s ease;
         transition: color .15s ease;
-      }
-
-      .sidebarDark a {
-        color: #B1B1B2;
-      }
+      } 
 
       .sidebar p {
         display: block;
@@ -96,10 +92,6 @@ export class Sidebar extends LitElement {
         border-color: #444444;
       }
 
-      .sidebarDark a:hover:not(.active) {
-        background-color: #B9B9BB;
-      }
-
       .sidebar a.active {
         background-color: #abd1de;
       }
@@ -109,7 +101,15 @@ export class Sidebar extends LitElement {
       }
 
       .sidebar a:hover:not(.active) {
-        background-color: #B9B9BB;
+        background-color: #DDE9EE;
+      }
+
+      .sidebarDark a {
+        color: #B1B1B2;
+      }
+
+      .sidebarDark a:hover:not(.active) {
+        background-color: #2D3748;
       }
 
       @media screen and (max-width: 1100px) {
@@ -179,7 +179,7 @@ export class Sidebar extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     let url = window.location.href;
-    this.aboutMe = { active: url.endsWith("aboutme") },
+    this.aboutMe = { active: (url.endsWith("aboutme") || url.endsWith("/"))},
     this.resume = { active: url.endsWith("resume") },
     this.projects = { active: url.endsWith("projects") }
     this.sideBarMap = { sidebar: true, sidebarDark: false }
@@ -214,8 +214,8 @@ export class Sidebar extends LitElement {
         </div>
         <toggle-button 
           class="toggleButton" 
-          @darkMode="${ this.themeChanged }"
-          @lightMode="${ this.themeChanged }"> 
+          @darkMode="${this.themeChanged}"
+          @lightMode="${this.themeChanged}"> 
         </toggle-button>
       </div>
     `

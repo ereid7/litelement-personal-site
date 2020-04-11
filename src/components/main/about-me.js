@@ -37,6 +37,8 @@ export class AboutMe extends LitElement {
             <p>You can reach me by email at <a href="mailto:${email}">evan@reids.us</a></p>
             <p>You can also find me on <a href="${linkedinUrl}">Linkedin</a> or <a href="${githubUrl}">Github</a>.</p>
         </div>
+
+        <footer-page></footer-page>
       </div>
     `
   }

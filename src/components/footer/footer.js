@@ -5,16 +5,13 @@ export class Footer extends LitElement {
   static get styles() {
     return css`
     .footer {
-      margin-top: 300px;
-      color: yellow;
-      width: 600px;
+      margin-top: 60px;
+      color: #D6D9DC;
+      width: 100%;
       height: 40px;
       text-align: center;
-      bottom: 0;
-    }
-
-    p {
-      width: 200px;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
     `;
   }
@@ -26,7 +23,7 @@ export class Footer extends LitElement {
   render() {
     return html`
     <div class="footer">
-      TEST FOOTER
+      © Copyright 2020, Evan Reid
     </div>
     `
   }
