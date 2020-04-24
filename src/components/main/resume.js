@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
-export class Resume extends LitElement {
+export class Experience extends LitElement {
 
   static get styles() {
     return css`
@@ -17,9 +17,9 @@ export class Resume extends LitElement {
 
   render() {
     return html`
-    <div class="resume">
+    <div class="experience">
       <div class="body">
-        <h1 class="header">Resume</h1>
+        <h1 class="header">Experience</h1>
         <h4 class="subHeader">human</h4>
             <p>Recent graduate from University of Wisconsin Stout 
               with a B.S in Applied Math and Computer Science.
@@ -32,4 +32,4 @@ export class Resume extends LitElement {
   }
 }
 
-customElements.define('resume-page', Resume);
+customElements.define('experience-page', Experience);

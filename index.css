@@ -52,7 +52,7 @@ hr {
   margin-top: 30px;
   margin-bottom: 30px;
   border: 1px solid;
-  border-color: #D6D9DC;
+  border-color: #E3E6E8;
 
   -webkit-transition: border-color .15s ease;
   -ms-transition: border-color .15s ease;
@@ -64,7 +64,7 @@ hr {
 }
 
 .dark hr {
-  border-color: #444444;
+  border-color: #353535;
 }
 
 .dark .body {

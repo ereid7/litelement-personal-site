@@ -7,7 +7,7 @@ export class Sidebar extends LitElement {
     return {
       isDark: { type: Boolean },
       aboutMe: { type: Object },
-      resume: { type: Object },
+      experience: { type: Object },
       projects: { type: Object },
       sideBarMap: { type: Object }
     };
@@ -20,13 +20,12 @@ export class Sidebar extends LitElement {
     return css`
       .sidebar {
         font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        border-right: 2px solid;
-        border-color: #D6D9DC;
+        box-shadow: 0px 0px 6px 0px #D2D2D7;
         margin: 0;
         padding: 0;
         width: 200px;
         text-align: center;
-        background-color: #FAFAFB;
+        background-color: #F4F4F7;
         position: fixed;
         height: 100%;
         overflow: auto;
@@ -37,7 +36,7 @@ export class Sidebar extends LitElement {
       }
 
       .sidebarDark {
-        border-color: #444444;
+        box-shadow: 0px 0px 6px 0px #161616;
         background-color: #323234;
       }
 
@@ -81,7 +80,7 @@ export class Sidebar extends LitElement {
         margin-top: 20px;
         margin-bottom: 20px;
         border: 1px solid;
-        border-color: #D6D9DC;
+        border-color: #E3E6E8;
 
         -webkit-transition: border-color .15s ease;
         -ms-transition: border-color .15s ease;
@@ -89,15 +88,17 @@ export class Sidebar extends LitElement {
       }
 
       .sidebarDark hr {
-        border-color: #444444;
+        border-color: #454545;
       }
 
       .sidebar a.active {
         background-color: #abd1de;
+        box-shadow: 0px 0px 2px 0px #D2D2D7;
       }
 
       .sidebarDark a.active {
         background-color: #42526C;
+        box-shadow: 0px 0px 2px 0px #1E1E20;
       }
 
       .sidebar a:hover:not(.active) {
@@ -114,15 +115,13 @@ export class Sidebar extends LitElement {
 
       @media screen and (max-width: 1100px) {
         .sidebar {
-          border-right: 0px;
-          border-bottom: 2px solid;
-          border-color: #D6D9DC;
+          box-shadow: 0px 1px 6px 0px #E3E6E8;
           width: 100%;
           height: 150px;
           position: relative;
         }
         .sidebarDark {
-          border-color: #444444;
+          box-shadow: 0px 0px 6px 0px #161616;
         }
         .sidebar a {
           float: none;
@@ -180,7 +179,7 @@ export class Sidebar extends LitElement {
     super.connectedCallback();
     let url = window.location.href;
     this.aboutMe = { active: (url.endsWith("aboutme") || url.endsWith("/"))},
-    this.resume = { active: url.endsWith("resume") },
+    this.experience = { active: url.endsWith("experience") },
     this.projects = { active: url.endsWith("projects") }
     this.sideBarMap = { sidebar: true, sidebarDark: false }
   }
@@ -189,7 +188,7 @@ export class Sidebar extends LitElement {
     // have to set whole object or use requestupdate
     let activePage = event.explicitOriginalTarget.id;
     this.aboutMe = { active: activePage === "aboutme" };
-    this.resume = { active: activePage === "resume" };
+    this.experience = { active: activePage === "experience" };
     this.projects = { active: activePage === "projects" };
   }
 
@@ -205,7 +204,7 @@ export class Sidebar extends LitElement {
         <p class="sidebarheader">Evan Reid</p>
         <hr />
         <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)} href="/aboutme">About Me</a>
-        <a id="resume" @click=${this.onClick} class=${classMap(this.resume)} href="/resume">Resume</a>
+        <a id="experience" @click=${this.onClick} class=${classMap(this.experience)} href="/experience">Experience</a>
         <a id="projects" @click=${this.onClick} class=${classMap(this.projects)} href="/aboutme">Projects</a>
         <hr />
         <div class="iconBar">
