@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 
 export class Footer extends LitElement {
 
+  // TODO footer dark mode
   static get styles() {
     return css`
     .footer {

@@ -13,7 +13,6 @@ export class Sidebar extends LitElement {
     };
   }
 
-  // TODO update hover colors
   // TODO capture diagnostics
   // TODO set cookie with style setting
   static get styles() {
@@ -116,32 +115,61 @@ export class Sidebar extends LitElement {
       @media screen and (max-width: 1100px) {
         .sidebar {
           box-shadow: 0px 1px 6px 0px #E3E6E8;
-          width: 100%;
-          height: 150px;
           position: relative;
         }
+
         .sidebarDark {
-          box-shadow: 0px 0px 6px 0px #161616;
+          box-shadow: 0px 0px 6px 0px #161616 !important;
         }
+
         .sidebar a {
-          float: none;
           text-align: center;
           margin-top: 6px;
           margin-bottom: 6px;
         }
-        .sidebarheader {
-          position:absolute;
-          visibility: hidden;
-        }
-        div.content {margin-left: 0;}
+
         hr {
-          position:absolute;
-          visibility: hidden;
+          display: none !important;
+        }
+        .sidebarheader {
+          display: none !important;
         }
         .iconBar {
-          position:absolute;
-          visibility: hidden;
+          display: none !important;
         }
+      }
+      
+      @media screen and (max-width: 1100px) and (min-width: 700px) {
+        .sidebar {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        .sidebar a {
+          width: 150px;
+          float: left !important;
+          
+          margin-left: 16px;
+          margin-right: 16px;
+        }
+      }
+
+      @media screen and (max-width: 700px) {
+        .sidebar {
+          box-shadow: 0px 1px 6px 0px #E3E6E8;
+          width: 100%;
+          height: 150px;
+          position: relative;
+        }
+
+        .sidebar a {
+          float: none;
+        }
+
+        div.content {margin-left: 0;}
       }
 
       .iconBar {
@@ -186,7 +214,7 @@ export class Sidebar extends LitElement {
 
   onClick(event) {
     // have to set whole object or use requestupdate
-    let activePage = event.explicitOriginalTarget.id;
+    let activePage = event.target.id;
     this.aboutMe = { active: activePage === "aboutme" };
     this.experience = { active: activePage === "experience" };
     this.projects = { active: activePage === "projects" };
