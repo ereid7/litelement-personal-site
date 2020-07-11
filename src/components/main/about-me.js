@@ -21,7 +21,7 @@ export class AboutMe extends LitElement {
   // TODO navigate here on blank url
   render() {
     let linkedinUrl = "https://www.linkedin.com/in/evan-reid-51703a123/";
-    let githubUrl = "https://github.com/EvanReid88"
+    let githubUrl = "https://github.com/ereid7"
     let email = "evan@reids.us";
 
     return html`

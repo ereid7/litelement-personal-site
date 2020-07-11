@@ -1,8 +1,30 @@
 {
   "dependencies": {
     "@vaadin/router": "^1.7.1",
-    "@webcomponents/webcomponentsjs": "^2.4.2",
-    "lit-element": "^2.2.1",
-    "webcomponents": "^0.1.4"
-  }
+    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "lit-element": "^2.3.1",
+    "polyserve": "^0.27.15",
+    "webcomponents": "^0.1.4",
+    "webpack": "^4.43.0"
+  },
+  "name": "evanwebsite",
+  "version": "1.0.0",
+  "description": "Evan Personal Site",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "polymer serve",
+    "serve": "polymer serve",
+    "start": "polymer serve" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ereid7/litelement-personal-site.git"
+  },
+  "author": "ereid7",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ereid7/litelement-personal-site/issues"
+  },
+  "homepage": "https://github.com/ereid7/litelement-personal-site#readme"
 }
