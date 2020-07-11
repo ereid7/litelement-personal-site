@@ -13,9 +13,9 @@
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "test": "polymer serve",
-    "serve": "polymer serve",
-    "start": "polymer serve" 
+    "test": "polyserve",
+    "serve": "polyserve",
+    "start": "polyserve" 
   },
   "repository": {
     "type": "git",
