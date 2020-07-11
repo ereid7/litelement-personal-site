@@ -3,9 +3,8 @@
     "@vaadin/router": "^1.7.1",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "lit-element": "^2.3.1",
-    "polyserve": "^0.27.15",
-    "webcomponents": "^0.1.4",
-    "webpack": "^4.43.0"
+    "polymer-cli": "^1.9.11",
+    "webcomponents": "^0.1.4"
   },
   "name": "evanwebsite",
   "version": "1.0.0",
@@ -13,9 +12,9 @@
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
-    "test": "polyserve",
-    "serve": "polyserve",
-    "start": "polyserve" 
+    "test": "polymer serve",
+    "serve": "polymer serve",
+    "start": "polymer serve"
   },
   "repository": {
     "type": "git",
