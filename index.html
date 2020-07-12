@@ -8,33 +8,19 @@
   <meta charset="utf-8">
   
   <!-- Load polyfills -->
-  <script 
+  <!-- <script 
     src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"
     defer>
-  </script>
+  </script> -->
   <link rel="stylesheet" type="text/css" href="index.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet"> 
 
-  <!-- Load components via WebComponents.waitFor -->
-  <script type="module">
-    window.WebComponents = window.WebComponents || { 
-      waitFor(cb){ addEventListener('WebComponentsReady', cb) }
-    } 
-    WebComponents.waitFor(async () => { 
-      import('./src/components/main/about-me.js');
-      import('./src/components/main/experience.js');
-      import('./src/components/sidebar/sidebar.js');
-      import('./src/components/sidebar/toggle-button.js');
-      import('./src/components/footer/footer.js');
-    });
-  </script>
 </head>
   <body style="margin: 0">  
-    <side-bar></side-bar>
-    <output class="outlet"></output>
-    <script src="app.js" type="module"></script>
+    <application-page></application-page>
+    <!-- <script src="app.js" type="module"></script>
     <noscript>
       Could not render the custom element. Check that JavaScript is enabled.
-    </noscript>
+    </noscript> -->
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from '../../../node_modules/lit-element';
 
 // TODO use typescript
 // TODO custom scrollbar

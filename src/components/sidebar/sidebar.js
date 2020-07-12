@@ -203,6 +203,28 @@ export class Sidebar extends LitElement {
     this.isDark = false;
   }
 
+  render() {
+    return html`
+      <div class=${classMap(this.sideBarMap)}>
+        <p class="sidebarheader">Evan Reid</p>
+        <hr />
+        <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)}>About Me</a>
+        <a id="experience" @click=${this.onClick} class=${classMap(this.experience)}>Experience</a>
+        <a id="projects" @click=${this.onClick} class=${classMap(this.projects)}>Projects</a>
+        <hr />
+        <div class="iconBar">
+          <img class="siteIcons" src="../../resources/icons/github.svg" ></img>
+          <img class="siteIcons" src="../../resources/icons/linkedin.svg" ></img>
+        </div>
+        <toggle-button 
+          class="toggleButton" 
+          @darkMode="${this.themeChanged}"
+          @lightMode="${this.themeChanged}"> 
+        </toggle-button>
+      </div>
+    `
+  }
+
   connectedCallback() {
     super.connectedCallback();
     let url = window.location.href;
@@ -218,34 +240,16 @@ export class Sidebar extends LitElement {
     this.aboutMe = { active: activePage === "aboutme" };
     this.experience = { active: activePage === "experience" };
     this.projects = { active: activePage === "projects" };
+
+    // update document path
+    window.history.pushState({}, "test", `/${activePage}`)
+    this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
   }
 
   themeChanged(e) {
     this.isDark = e.type == "darkMode";
     this.sideBarMap = { sidebar: true, sidebarDark: this.isDark }
     this.dispatchEvent(new Event(e.type));
-  }
-
-  render() {
-    return html`
-      <div class=${classMap(this.sideBarMap)}>
-        <p class="sidebarheader">Evan Reid</p>
-        <hr />
-        <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)} href="/aboutme">About Me</a>
-        <a id="experience" @click=${this.onClick} class=${classMap(this.experience)} href="/experience">Experience</a>
-        <a id="projects" @click=${this.onClick} class=${classMap(this.projects)} href="/aboutme">Projects</a>
-        <hr />
-        <div class="iconBar">
-          <img class="siteIcons" src="../../resources/icons/github.svg" ></img>
-          <img class="siteIcons" src="../../resources/icons/linkedin.svg" ></img>
-        </div>
-        <toggle-button 
-          class="toggleButton" 
-          @darkMode="${this.themeChanged}"
-          @lightMode="${this.themeChanged}"> 
-        </toggle-button>
-      </div>
-    `
   }
 }
 

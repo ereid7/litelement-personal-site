@@ -1,8 +1,4 @@
 
-.outlet {
-  text-align: center;
-}
-
 body {
   -webkit-transition: background-color .15s ease;
   -ms-transition: background-color .15s ease;
@@ -73,6 +69,10 @@ hr {
 
 .dark .subHeader {
   color: #42526C;
+}
+
+.outlet {
+  text-align: center;
 }
 
 @media screen and (max-width: 1100px) {
