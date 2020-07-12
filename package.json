@@ -9,6 +9,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
+    "serve": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --open --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
