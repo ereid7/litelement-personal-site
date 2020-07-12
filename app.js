@@ -6,6 +6,8 @@ import './src/components/sidebar/sidebar.js'
 import './src/components/sidebar/toggle-button.js'
 //import 'vaadin-router'
 
+// TODO may have to use express with this
+
 // // setup a Router instance
 // const outlet = document.querySelector('output');
 // const body = document.querySelector('body');

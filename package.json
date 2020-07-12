@@ -15,9 +15,10 @@
   "description": "Evan Personal Site",
   "main": "app.js",
   "scripts": {
+    "build": "webpack --mode production --config ./webpack.config.js",
     "dev": "webpack-dev-server --open --mode development",
-    "serve": "webpack-dev-server --open --mode development",
-    "start": "webpack-dev-server --open --mode development",
+    "serve": "webpack-dev-server --open",
+    "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
