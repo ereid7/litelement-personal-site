@@ -38,9 +38,8 @@ export class Application extends LitElement {
     <side-bar></side-bar>
     <!-- TODO use slot here - extend common styles for about-me pages -->
     <div class="applications">
-      <about-me ?darkMode="${this.darkMode}"></about-me>
+      <about-me .darkMode="${this.darkMode}"></about-me>
     </div>
-      <!-- <output class="outlet"></output> -->
     `
   }
 
@@ -68,25 +67,14 @@ export class Application extends LitElement {
     console.log(document.location);
   }
 
-  // firstUpdated(changedProperties) {
-  //   super.firstUpdated(changedProperties);
-
-  //   this.attachListeners();
-  // }
-
-  // attachListeners() {
-  //   this.addEventListener("darkMode", this.onThemeChanged);
-  //   this.addEventListener("lightMode", this.onThemeChanged)
-  // }
-
+  // TODO refactor
   onThemeChanged(e) {
     const body = document.body;
-    if (e.type === "darkMode") {
+    this.darkMode = e.type === "darkMode";
+    if (this.darkMode) {
       body.style.background = "#1E1E1E"
-      this.darkMode = true;
     } else {
       body.style.background = "white"
-      this.darkMode = false;
     }
   }
 }

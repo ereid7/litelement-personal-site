@@ -1,4 +1,5 @@
 import { LitElement, html, css } from '../../../node_modules/lit-element';
+import { classMap } from 'lit-html/directives/class-map';
 import { BasePage } from './base-page';
 
 // TODO use typescript
@@ -18,8 +19,8 @@ export class AboutMe extends BasePage {
     let email = "evan@reids.us";
 
     return html`
-      <div class="aboutMe">
-          <div id="aboutMeBody" class="body">
+      <div class=${classMap(this.contentClassMap)}>
+          <div id="aboutMeBody" class="page-body">
             <h1 class="header">Evan Reid</h1>
             <h4 class="subHeader">San Diego, CA</h4>
             <p>Recent graduate from University of Wisconsin Stout 

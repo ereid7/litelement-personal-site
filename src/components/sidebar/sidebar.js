@@ -7,7 +7,7 @@ export class Sidebar extends LitElement {
 
   static get properties() {
     return {
-      isDark: { type: Boolean },
+      darkMode: { type: Boolean },
       aboutMe: { type: Object },
       experience: { type: Object },
       projects: { type: Object },
@@ -203,7 +203,7 @@ export class Sidebar extends LitElement {
 
   constructor() {
     super()
-    this.isDark = false;
+    this.darkMode = false;
   }
 
   render() {
@@ -251,8 +251,8 @@ export class Sidebar extends LitElement {
   }
 
   themeChanged(e) {
-    this.isDark = e.type == "darkMode";
-    this.sideBarMap = { sidebar: true, sidebarDark: this.isDark }
+    this.darkMode = e.type == "darkMode";
+    this.sideBarMap = { sidebar: true, sidebarDark: this.darkMode}
   }
 }
 
