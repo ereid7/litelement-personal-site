@@ -51,6 +51,7 @@ export class Sidebar extends LitElement {
         border-radius: 10px;
         text-align: center;
         text-decoration: none;
+        cursor: pointer;
 
         -webkit-transition: color .15s ease;
         -ms-transition: color .15s ease;

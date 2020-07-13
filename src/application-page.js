@@ -2,10 +2,6 @@ import { LitElement, html, css } from 'lit-element';
 
 export class Application extends LitElement {
 
-  // createRenderRoot() {
-  //   return this;
-  // }
-
   static get properties() {
     return {
       darkMode: { 
@@ -38,13 +34,21 @@ export class Application extends LitElement {
     <side-bar></side-bar>
     <!-- TODO use slot here - extend common styles for about-me pages -->
     <div class="applications">
-      <about-me .darkMode="${this.darkMode}"></about-me>
+      ${this.renderPage()}
     </div>
     `
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+
+  renderPage() {
+    const path = document.location.pathname.substr(1);
+    switch (path) {
+      case "":
+      case "aboutme":
+        return html`<about-me .darkMode="${this.darkMode}"></about-me>`;
+      case "experience":
+        return html`<experience-page .darkMode="${this.darkMode}"></experience-page>`;
+    }
   }
 
   firstUpdated(changedProperties) {
@@ -56,15 +60,11 @@ export class Application extends LitElement {
 
   attachListeners() {
     window.addEventListener('popstate', (event) => {
-      this.onLocationChanged();
+      this.performUpdate();
     })
 
     this.addEventListener("darkMode", this.onThemeChanged);
     this.addEventListener("lightMode", this.onThemeChanged)
-  }
-
-  onLocationChanged() {
-    console.log(document.location);
   }
 
   // TODO refactor

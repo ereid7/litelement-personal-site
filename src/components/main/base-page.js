@@ -103,5 +103,3 @@ export class BasePage extends LitElement {
     })
   }
 }
-
-customElements.define('base-page', BasePage);
