@@ -32,15 +32,13 @@ export class Application extends LitElement {
   render() {
     return html`
     <side-bar></side-bar>
-    <!-- TODO use slot here - extend common styles for about-me pages -->
     <div class="applications">
-      ${this.renderPage()}
+      ${this.renderCurrentPage()}
     </div>
     `
   }
 
-
-  renderPage() {
+  renderCurrentPage() {
     const path = document.location.pathname.substr(1);
     switch (path) {
       case "":
@@ -55,7 +53,6 @@ export class Application extends LitElement {
     super.firstUpdated(changedProperties);
 
     this.attachListeners();
-    console.log(document.location);
   }
 
   attachListeners() {
@@ -63,14 +60,13 @@ export class Application extends LitElement {
       this.performUpdate();
     })
 
-    this.addEventListener("darkMode", this.onThemeChanged);
-    this.addEventListener("lightMode", this.onThemeChanged)
+    this.addEventListener("toggle-changed", this.onThemeChanged);
   }
 
   // TODO refactor
   onThemeChanged(e) {
     const body = document.body;
-    this.darkMode = e.type === "darkMode";
+    this.darkMode = e.detail.darkMode;
     if (this.darkMode) {
       body.style.background = "#1E1E1E"
     } else {

@@ -17,6 +17,7 @@ export class Sidebar extends LitElement {
 
   // TODO capture diagnostics
   // TODO set cookie with style setting
+  // TODO import styles from file
   static get styles() {
     return css`
       .sidebar {
@@ -212,19 +213,17 @@ export class Sidebar extends LitElement {
       <div class=${classMap(this.sideBarMap)}>
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a id="aboutme" @click=${this.onClick} class=${classMap(this.aboutMe)}>About Me</a>
-        <a id="experience" @click=${this.onClick} class=${classMap(this.experience)}>Experience</a>
-        <a id="projects" @click=${this.onClick} class=${classMap(this.projects)}>Projects</a>
+        <a id="aboutme" @click=${this.onClick} class=${this.isPageActive("aboutme", "")}>About Me</a>
+        <a id="experience" @click=${this.onClick} class=${this.isPageActive("experience")}>Experience</a>
+        <a id="projects" @click=${this.onClick} class=${this.isPageActive("projects")}>Projects</a>
         <hr />
         <div class="iconBar">
-          <!-- TODO restyle -->
           <div class="siteIcons">${githubSvg}</div>
           <div class="siteIcons">${linkedinSvg}</div>
         </div>
         <toggle-button 
           class="toggleButton" 
-          @darkMode="${this.themeChanged}"
-          @lightMode="${this.themeChanged}"> 
+          @toggle-changed="${this.themeChanged}"> 
         </toggle-button>
       </div>
     `
@@ -232,28 +231,36 @@ export class Sidebar extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    let url = window.location.href;
-    this.aboutMe = { active: (url.endsWith("aboutme") || url.endsWith("/"))},
-    this.experience = { active: url.endsWith("experience") },
-    this.projects = { active: url.endsWith("projects") }
     this.sideBarMap = { sidebar: true, sidebarDark: false }
   }
 
   onClick(event) {
-    // have to set whole object or use requestupdate
-    let activePage = event.target.id;
-    this.aboutMe = { active: activePage === "aboutme" };
-    this.experience = { active: activePage === "experience" };
-    this.projects = { active: activePage === "projects" };
+    this.updatePage(event.target.id)
+  }
 
-    // update document path TODO correct defn
-    window.history.pushState({}, "test", `/${activePage}`)
-    this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
+  isPageActive(...itemNames) {
+    const path = window.location.pathname.substr(1);
+    let pageActive = false;
+    itemNames.forEach((item) => {
+      if (path === item) {
+        pageActive = true;
+      }
+    })
+
+    return classMap({ active: pageActive })
+  }
+
+  updatePage(activePage) {
+     // update document path TODO correct defn - get name from const
+     window.history.pushState({}, "test", `/${activePage}`)
+     this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
+
+     this.performUpdate();
   }
 
   themeChanged(e) {
-    this.darkMode = e.type == "darkMode";
-    this.sideBarMap = { sidebar: true, sidebarDark: this.darkMode}
+    this.darkMode = e.detail.darkMode;
+    this.sideBarMap = { sidebar: true, sidebarDark: this.darkMode }
   }
 }
 

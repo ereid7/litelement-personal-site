@@ -4,16 +4,14 @@ import { BasePage } from './base-page';
 
 // TODO use typescript
 // TODO custom scrollbar
-
-// TODO extend element with styles
 export class AboutMe extends BasePage {
 
   constructor() {
     super()
   }
 
-  // TODO navigate here on blank url
   render() {
+    // TODO move to const
     let linkedinUrl = "https://www.linkedin.com/in/evan-reid-51703a123/";
     let githubUrl = "https://github.com/ereid7"
     let email = "evan@reids.us";
