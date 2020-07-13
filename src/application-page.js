@@ -6,102 +6,31 @@ export class Application extends LitElement {
   //   return this;
   // }
 
+  static get properties() {
+    return {
+      darkMode: { 
+        type: Boolean
+      },
+    };
+  }
+
   static get styles() {
-    return css`      
-body {
-  -webkit-transition: background-color .15s ease;
-  -ms-transition: background-color .15s ease;
-  transition: background-color .15s ease;
-}
-
-.dark {
-  background-color: #1E1E1E;
-}
-
-.body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #3C4146;
-  display: inline-block;
-  margin-top: 50px;
-  width: 600px;
-  text-align: left;
-  overflow-wrap: normal;
-
-  -webkit-transition: background-color .15s ease;
-  -ms-transition: background-color .15s ease;
-  transition: background-color .15s ease;
-}
-
-p {
-  font-size: 16px;
-}
-
-.subHeader {
-  color: #abd1de;
-  margin-left: 2px;
-
-  -webkit-transition: color .15s ease;
-  -ms-transition: color .15s ease;
-  transition: color .15s ease;
-}
-
-a {
-  color: #629AB3;
-
-  -webkit-transition: color .15s ease;
-  -ms-transition: color .15s ease;
-  transition: color .15s ease;
-}
-
-hr {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  border: 1px solid;
-  border-color: #E3E6E8;
-
-  -webkit-transition: border-color .15s ease;
-  -ms-transition: border-color .15s ease;
-  transition: border-color .15s ease;
-}
-
-.dark a {
-  color: #6A80A4;
-}
-
-.dark hr {
-  border-color: #353535;
-}
-
-.dark .body {
-  color: #B1B1B2;
-}
-
-.dark .subHeader {
-  color: #42526C;
-}
-
-.applications {
-  text-align: center;
-}
-
-@media screen and (max-width: 1100px) {
-  .applications {
-    left: 0px;
-  }
-  .body {
-    width: auto;
-    max-width: 600px;
-    margin-top: 0px;
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-
+    return css`     
+    .applications {
+      text-align: center;
+    }
+    
+    @media screen and (max-width: 1100px) {
+      .applications {
+        left: 0px;
+      }
+    }
     `;
   }
 
   constructor() {
     super();
+    this.darkMode = false;
   }
 
   render() {
@@ -109,7 +38,7 @@ hr {
     <side-bar></side-bar>
     <!-- TODO use slot here - extend common styles for about-me pages -->
     <div class="applications">
-      <about-me></about-me>
+      <about-me ?darkMode="${this.darkMode}"></about-me>
     </div>
       <!-- <output class="outlet"></output> -->
     `
@@ -131,19 +60,34 @@ hr {
       this.onLocationChanged();
     })
 
-    // temp style listeners
-    const body = document.querySelector('body');
-    const sideBar = this.shadowRoot.querySelector('side-bar');
-    sideBar.addEventListener('darkMode', (e) => {
-      body.classList.add("dark");
-    });
-    sideBar.addEventListener('lightMode', (e) => {
-      body.classList.remove("dark");
-    });
+    this.addEventListener("darkMode", this.onThemeChanged);
+    this.addEventListener("lightMode", this.onThemeChanged)
   }
 
   onLocationChanged() {
     console.log(document.location);
+  }
+
+  // firstUpdated(changedProperties) {
+  //   super.firstUpdated(changedProperties);
+
+  //   this.attachListeners();
+  // }
+
+  // attachListeners() {
+  //   this.addEventListener("darkMode", this.onThemeChanged);
+  //   this.addEventListener("lightMode", this.onThemeChanged)
+  // }
+
+  onThemeChanged(e) {
+    const body = document.body;
+    if (e.type === "darkMode") {
+      body.style.background = "#1E1E1E"
+      this.darkMode = true;
+    } else {
+      body.style.background = "white"
+      this.darkMode = false;
+    }
   }
 }
 

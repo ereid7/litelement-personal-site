@@ -245,7 +245,7 @@ export class Sidebar extends LitElement {
     this.experience = { active: activePage === "experience" };
     this.projects = { active: activePage === "projects" };
 
-    // update document path
+    // update document path TODO correct defn
     window.history.pushState({}, "test", `/${activePage}`)
     this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
   }
@@ -253,7 +253,6 @@ export class Sidebar extends LitElement {
   themeChanged(e) {
     this.isDark = e.type == "darkMode";
     this.sideBarMap = { sidebar: true, sidebarDark: this.isDark }
-    //this.dispatchEvent(new Event(e.type));
   }
 }
 

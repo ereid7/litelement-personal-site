@@ -1,22 +1,14 @@
 import { LitElement, html, css } from '../../../node_modules/lit-element';
+import { BasePage } from './base-page';
 
 // TODO use typescript
 // TODO custom scrollbar
 
 // TODO extend element with styles
-export class AboutMe extends LitElement {
-
-  static get styles() {
-    return css`
-    `;
-  }
+export class AboutMe extends BasePage {
 
   constructor() {
     super()
-  }
-
-  createRenderRoot() {
-    return this;
   }
 
   // TODO navigate here on blank url

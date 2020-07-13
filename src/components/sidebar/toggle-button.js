@@ -80,9 +80,7 @@ export class ToggleButton extends LitElement {
   }
 
   onChange(e) {
-    //let oldVal = this.isDark;
     this.isDark = e.target.checked;
-    //this.requestUpdate('isDark', oldVal);
     this.performUpdate();
     
     let event = this.isDark 

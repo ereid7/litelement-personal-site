@@ -1,18 +1,10 @@
 import { LitElement, html, css } from 'lit-element';
+import { BasePage } from './base-page';
 
-export class Experience extends LitElement {
-
-  static get styles() {
-    return css`
-    `;
-  }
+export class Experience extends BasePage {
 
   constructor() {
     super()
-  }
-
-  createRenderRoot() {
-    return this;
   }
 
   render() {
