@@ -253,7 +253,7 @@ export class Sidebar extends LitElement {
   themeChanged(e) {
     this.isDark = e.type == "darkMode";
     this.sideBarMap = { sidebar: true, sidebarDark: this.isDark }
-    this.dispatchEvent(new Event(e.type));
+    //this.dispatchEvent(new Event(e.type));
   }
 }
 
