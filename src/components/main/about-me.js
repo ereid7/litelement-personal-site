@@ -3,6 +3,7 @@ import { LitElement, html, css } from '../../../node_modules/lit-element';
 // TODO use typescript
 // TODO custom scrollbar
 
+// TODO extend element with styles
 export class AboutMe extends LitElement {
 
   static get styles() {

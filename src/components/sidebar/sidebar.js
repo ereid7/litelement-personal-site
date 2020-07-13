@@ -175,6 +175,7 @@ export class Sidebar extends LitElement {
       }
 
       .iconBar {
+        display: inline-flex;
         text-align: center;
       }
 

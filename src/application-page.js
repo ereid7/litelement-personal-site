@@ -7,8 +7,7 @@ export class Application extends LitElement {
   // }
 
   static get styles() {
-    return css`
-      
+    return css`      
 body {
   -webkit-transition: background-color .15s ease;
   -ms-transition: background-color .15s ease;
@@ -81,12 +80,12 @@ hr {
   color: #42526C;
 }
 
-.outlet {
+.applications {
   text-align: center;
 }
 
 @media screen and (max-width: 1100px) {
-  .outlet {
+  .applications {
     left: 0px;
   }
   .body {
@@ -108,7 +107,8 @@ hr {
   render() {
     return html`
     <side-bar></side-bar>
-    <div id="applications">
+    <!-- TODO use slot here - extend common styles for about-me pages -->
+    <div class="applications">
       <about-me></about-me>
     </div>
       <!-- <output class="outlet"></output> -->
@@ -117,13 +117,12 @@ hr {
 
   connectedCallback() {
     super.connectedCallback();
-   
-    this.attachListeners();
   }
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
 
+    this.attachListeners();
     console.log(document.location);
   }
 
@@ -131,6 +130,16 @@ hr {
     window.addEventListener('popstate', (event) => {
       this.onLocationChanged();
     })
+
+    // temp style listeners
+    const body = document.querySelector('body');
+    const sideBar = this.shadowRoot.querySelector('side-bar');
+    sideBar.addEventListener('darkMode', (e) => {
+      body.classList.add("dark");
+    });
+    sideBar.addEventListener('lightMode', (e) => {
+      body.classList.remove("dark");
+    });
   }
 
   onLocationChanged() {
