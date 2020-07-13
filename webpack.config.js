@@ -26,7 +26,8 @@ module.exports = {
             ]
           }
         }
-      }
+      },
+      { test: /\.svg$/, loader: 'lit-svg-loader' }
     ]
   },
   plugins: [

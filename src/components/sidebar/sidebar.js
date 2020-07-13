@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
+import githubSvg from '../../../resources/icons/github.svg';
+import linkedinSvg from '../../../resources/icons/linkedin.svg';
 
 export class Sidebar extends LitElement {
 
@@ -176,7 +178,7 @@ export class Sidebar extends LitElement {
         text-align: center;
       }
 
-      .sidebar img {
+      .sidebar .siteIcons {
         width: 25px;
         margin-left: 10px;
         margin-right: 10px;
@@ -188,7 +190,7 @@ export class Sidebar extends LitElement {
         transition: filter .15s ease;
       }
 
-      .sidebarDark img {
+      .sidebarDark .siteIcons {
         filter: invert(29%) sepia(22%) saturate(683%) hue-rotate(178deg) brightness(97%) contrast(92%);
 
         -webkit-transition: filter .15s ease;
@@ -213,8 +215,9 @@ export class Sidebar extends LitElement {
         <a id="projects" @click=${this.onClick} class=${classMap(this.projects)}>Projects</a>
         <hr />
         <div class="iconBar">
-          <img class="siteIcons" src="../../resources/icons/github.svg" ></img>
-          <img class="siteIcons" src="../../resources/icons/linkedin.svg" ></img>
+          <!-- TODO restyle -->
+          <div class="siteIcons">${githubSvg}</div>
+          <div class="siteIcons">${linkedinSvg}</div>
         </div>
         <toggle-button 
           class="toggleButton" 
