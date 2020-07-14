@@ -59,7 +59,7 @@ export class BasePage extends LitElement {
         -ms-transition: border-color .15s ease;
         transition: border-color .15s ease;
       }
-  
+
       .dark a {
         color: #6A80A4;
       }

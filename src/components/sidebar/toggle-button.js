@@ -95,7 +95,7 @@ export class ToggleButton extends LitElement {
     return html`
       <div className="toggleButton"> 
         <label class="form-switch">
-          <input id="darkMode" @change="${ this.onChange }" type="checkbox">
+          <input id="darkMode" @change="${this.onChange}" type="checkbox">
           <i></i></label>
         </body>
       </div> 

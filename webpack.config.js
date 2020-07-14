@@ -7,7 +7,7 @@ module.exports = {
     historyApiFallback: true
   },
   mode: 'development',
-  entry: './app.js',
+  entry: './index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')

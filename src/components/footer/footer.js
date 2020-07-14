@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 
 export class Footer extends LitElement {
+  // TODO remove?
 
   // TODO footer dark mode
   static get styles() {
@@ -15,10 +16,6 @@ export class Footer extends LitElement {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
     `;
-  }
-
-  constructor() {
-    super()
   }
 
   render() {
