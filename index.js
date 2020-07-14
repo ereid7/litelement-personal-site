@@ -6,4 +6,8 @@ import './src/components/sidebar/sidebar.js'
 import './src/components/sidebar/toggle-button.js'
 import './src/application-page.js'
 
+// styles
+// import './src/components/sidebar/css/sidebar-styles.js'
+import './src/components/sidebar/css/sidebar.css'
+
 // https://github.com/JeremyBernier/lit-element-webpack-hello-world
