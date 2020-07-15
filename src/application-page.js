@@ -41,11 +41,12 @@ export class Application extends LitElement {
   renderCurrentPage() {
     const path = document.location.pathname.substr(1);
     switch (path) {
-      case "":
-      case "aboutme":
-        return html`<about-me .darkMode="${this.darkMode}"></about-me>`;
       case "experience":
         return html`<experience-page .darkMode="${this.darkMode}"></experience-page>`;
+      case "projects":
+        return html`<projects-page .darkMode="${this.darkMode}"></projects-page>`;
+      default:
+        return html`<about-me .darkMode="${this.darkMode}"></about-me>`;
     }
   }
 

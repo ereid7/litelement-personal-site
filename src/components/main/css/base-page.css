@@ -17,12 +17,21 @@ p {
 }
 
 .subHeader {
-  color: #abd1de;
+  color: #90b2bd;
   margin-left: 2px;
 
   -webkit-transition: color .15s ease;
   -ms-transition: color .15s ease;
   transition: color .15s ease;
+}
+
+.short {
+  margin-top: -20px;
+  margin-left: 0px
+}
+
+.description {
+  margin-top: -15px;
 }
 
 a {
@@ -57,7 +66,7 @@ hr {
 }
 
 .dark .subHeader {
-  color: #42526C;
+  color: #526585;
 }
 
 @media screen and (max-width: 1100px) {
