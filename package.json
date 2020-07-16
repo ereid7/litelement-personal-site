@@ -13,7 +13,11 @@
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@open-wc/testing-karma": "^3.0.0",
+    "deepmerge": "^3.2.0",
+    "@open-wc/testing": "^2.0.0"
+  },
   "name": "evanwebsite",
   "version": "1.0.0",
   "description": "Evan Personal Site",
@@ -23,7 +27,8 @@
     "dev": "webpack-dev-server --open --mode development",
     "serve": "webpack-dev-server --open",
     "start": "npm run build && node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start --coverage",
+    "test:watch": "karma start --auto-watch=true --single-run=false"
   },
   "repository": {
     "type": "git",
