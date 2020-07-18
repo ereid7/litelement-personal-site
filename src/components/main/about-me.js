@@ -1,4 +1,4 @@
-import { LitElement, html, css } from '../../../node_modules/lit-element';
+import { html } from '../../../node_modules/lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { BasePage } from './base-page';
 
