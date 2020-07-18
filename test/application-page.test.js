@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import { html, fixture, expect, stub } from '@open-wc/testing';
+import { html, fixture, expect } from '@open-wc/testing';
 import { stub } from 'sinon';
 
 import '../src/application-page.js';
@@ -19,18 +19,12 @@ const navigateToPath = (path) => {
   window.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }));
 }
 
-const expectedTemplate = (elementName) => {
-  return `
-  <side-bar></side-bar>
-  <div class="applications">
-    <${elementName}></${elementName}>
-  </div>
-  `;
-}
-
 describe('application page', () => {
 
-  it('listeners attached on firstUpdated', async () => {
+  /**
+   * Functionality unit tests
+   */
+  it('Verify listeners attached on firstUpdated', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
     const attachListeners = stub(el, 'attachListeners');
     el.firstUpdated(null);
@@ -39,9 +33,37 @@ describe('application page', () => {
     expect(attachListeners).to.have.callCount(1);
   });
 
-  it('darkMode set to false by default', async () => {
+  it('Verify darkMode set to false by default', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
     expect(el.darkMode).to.equal(false);
+  });
+
+  it('Verify update darkMode when toggle-changed event recieved', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+    const sideBar = el.shadowRoot.querySelector('side-bar');
+
+    // simulate button toggle-changed event
+    sideBar.dispatchEvent(new CustomEvent('toggle-changed', { 
+      bubbles: true,
+      composed: true,
+      detail: {
+        darkMode: true
+      }
+    }))
+
+    // assert dark mode is true
+    expect(el.darkMode).to.equal(true);
+  });
+
+  it('Verify performUpdate called on popstate event', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+    const performUpdate = stub(el, 'performUpdate');
+
+    // dispatch popstate event
+    window.dispatchEvent(new CustomEvent('popstate', { composed: true, bubbles: true }));
+
+    // assert performUpdate() has been called once
+    expect(performUpdate).to.have.callCount(1);
   });
 
   /**
@@ -50,6 +72,7 @@ describe('application page', () => {
 
   it('display about-me page by default', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+    
     expect(el).shadowDom.to.equal(`
     <side-bar></side-bar>
     <div class="applications">

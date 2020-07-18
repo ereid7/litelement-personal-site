@@ -2,6 +2,9 @@ import { LitElement, html, css } from 'lit-element';
 
 export class ApplicationPage extends LitElement {
 
+  _lightBodyColor = "white";
+  _darkBodyColor = "#1E1E1E";
+
   static get properties() {
     return {
       darkMode: { 
@@ -64,14 +67,13 @@ export class ApplicationPage extends LitElement {
     this.addEventListener("toggle-changed", this.onThemeChanged);
   }
 
-  // TODO refactor
   onThemeChanged(e) {
     const body = document.body;
     this.darkMode = e.detail.darkMode;
     if (this.darkMode) {
-      body.style.background = "#1E1E1E"
+      body.style.background = this._darkBodyColor;
     } else {
-      body.style.background = "white"
+      body.style.background = this._lightBodyColor;
     }
   }
 }
