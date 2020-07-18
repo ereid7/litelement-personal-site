@@ -1,3 +1,4 @@
+export const styles = `
 .sidebar {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   box-shadow: 0px 0px 6px 0px #D2D2D7;
@@ -178,3 +179,4 @@
   -ms-transition: filter .15s ease;
   transition: filter .15s ease;
 }
+`;

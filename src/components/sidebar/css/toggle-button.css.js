@@ -1,3 +1,5 @@
+
+export const styles = `
 .form-switch {
   cursor: pointer;
   opacity: 0.8;
@@ -58,4 +60,4 @@
 .form-switch input { display: none; }
 .form-switch input:checked + i { background-color: #42526C; }
 .form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
-.form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }
+.form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }`;

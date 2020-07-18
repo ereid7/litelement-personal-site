@@ -1,7 +1,7 @@
 import { LitElement, html, css, unsafeCSS } from 'lit-element';
 
 // stylesheet
-import toggleButtonStyles from '!!raw-loader!./css/toggle-button.css';
+import { styles } from './css/toggle-button.css.js';
 
 export class ToggleButton extends LitElement {
 
@@ -14,7 +14,7 @@ export class ToggleButton extends LitElement {
   static get styles() {
     // toggle button styles from:
     // https://www.cssscript.com/realistic-ios-switch-pure-css/
-    return [unsafeCSS(toggleButtonStyles)]
+    return [unsafeCSS(styles)]
   }
 
   constructor() {
@@ -35,12 +35,13 @@ export class ToggleButton extends LitElement {
 
   render() {
     return html`
-      <div className="toggleButton"> 
-        <label class="form-switch">
-          <input id="darkMode" @change="${this.onChange}" type="checkbox">
-          <i></i></label>
-        </body>
-      </div> 
+    
+    <div className="toggleButton"> 
+      <label class="form-switch">
+        <input id="darkMode" @change="${this.onChange}" type="checkbox">
+        <i></i></label>
+      </body>
+    </div> 
     `
   }
 }

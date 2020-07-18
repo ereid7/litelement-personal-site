@@ -26,12 +26,7 @@ module.exports = {
             ]
           }
         }
-      },
-      { test: /\.svg$/, loader: 'lit-svg-loader' },
-      {
-        test: /\.css$/i,
-        use: 'raw-loader',
-    }
+      }
     ]
   },
   plugins: [

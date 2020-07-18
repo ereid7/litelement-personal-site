@@ -1,3 +1,4 @@
+export const styles = `
 .page-body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: #3C4146;
@@ -77,4 +78,4 @@ hr {
     margin-left: 20px;
     margin-right: 20px;
   }
-}
+}`;

@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from 'lit-element';
 
 // stylesheet
-import basePageStyles from '!!raw-loader!./css/base-page.css';
+import { styles } from './css/base-page.css.js';
 
 export class BasePage extends LitElement {
 
@@ -16,7 +16,7 @@ export class BasePage extends LitElement {
   }
 
   static get styles() {
-    return [unsafeCSS(basePageStyles)]
+    return [unsafeCSS(styles)]
   }
 
   constructor() {

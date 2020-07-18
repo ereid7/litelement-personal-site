@@ -1,10 +1,10 @@
 import { LitElement, html, unsafeCSS } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import githubSvg from '../../../resources/icons/github.svg';
-import linkedinSvg from '../../../resources/icons/linkedin.svg';
+import { gitHubSvg } from '../../../resources/icons/github.svg.js';
+import { linkedInSvg } from '../../../resources/icons/linkedin.svg.js';
 
 // stylesheet
-import sidebarStyles from '!!raw-loader!./css/sidebar.css';
+import { styles } from './css/sidebar.css.js';
 
 export class Sidebar extends LitElement {
 
@@ -21,7 +21,7 @@ export class Sidebar extends LitElement {
   // TODO capture diagnostics
   // TODO set cookie with style setting
   static get styles() {
-    return [unsafeCSS(sidebarStyles)]
+    return [unsafeCSS(styles)]
   }
 
   constructor() {
@@ -39,8 +39,8 @@ export class Sidebar extends LitElement {
         <a id="projects" @click=${this.onClick} class=${this.isPageActive("projects")}>Projects</a>
         <hr />
         <div class="iconBar">
-          <div class="siteIcons">${githubSvg}</div>
-          <div class="siteIcons">${linkedinSvg}</div>
+          <div class="siteIcons">${gitHubSvg}</div>
+          <div class="siteIcons">${linkedInSvg}</div>
         </div>
         <toggle-button 
           class="toggleButton" 
