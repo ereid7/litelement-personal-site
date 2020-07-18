@@ -19,6 +19,7 @@ export class ToggleButton extends LitElement {
 
   constructor() {
     super();
+    this.darkMode = false;
   }
 
   onChange(e) {
@@ -29,13 +30,12 @@ export class ToggleButton extends LitElement {
       bubbles: true, 
       composed: true, 
       detail: { darkMode: this.darkMode } 
-    }) 
+    }); 
     this.dispatchEvent(event);
   }
 
   render() {
     return html`
-    
     <div className="toggleButton"> 
       <label class="form-switch">
         <input id="darkMode" @change="${this.onChange}" type="checkbox">

@@ -8,7 +8,7 @@ import '../src/application-page.js';
  * @typedef {import('../src/application-page.js').ApplicationPage} ApplicationPage
  */
 
-const appTemplate = html`<application-page></application-page>`
+const _template = html`<application-page></application-page>`
 
 /**
   * Helper Methods
@@ -19,13 +19,26 @@ const navigateToPath = (path) => {
   window.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }));
 }
 
+const fireToggleChanged = (element, toggled) => {
+  // simulate button toggle-changed event
+  const sideBar = element.shadowRoot.querySelector('side-bar');
+  sideBar.dispatchEvent(new CustomEvent('toggle-changed', { 
+    bubbles: true,
+    composed: true,
+    detail: {
+      darkMode: toggled
+    }
+  }))
+}
+
 describe('application page', () => {
 
   /**
    * Functionality unit tests
    */
-  it('Verify listeners attached on firstUpdated', async () => {
-    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+  
+  it('Verify attachListeners called on firstUpdated', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
     const attachListeners = stub(el, 'attachListeners');
     el.firstUpdated(null);
 
@@ -34,29 +47,30 @@ describe('application page', () => {
   });
 
   it('Verify darkMode set to false by default', async () => {
-    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
     expect(el.darkMode).to.equal(false);
   });
 
-  it('Verify update darkMode when toggle-changed event recieved', async () => {
-    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
-    const sideBar = el.shadowRoot.querySelector('side-bar');
+  it('Verify update darkMode=true when toggle-changed event detail true', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
 
-    // simulate button toggle-changed event
-    sideBar.dispatchEvent(new CustomEvent('toggle-changed', { 
-      bubbles: true,
-      composed: true,
-      detail: {
-        darkMode: true
-      }
-    }))
+    fireToggleChanged(el, true);
 
     // assert dark mode is true
     expect(el.darkMode).to.equal(true);
   });
 
+  it('Verify update darkMode=false when toggle-changed event detail false', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
+    el.darkMode = true;
+    fireToggleChanged(el, false);
+
+    // assert dark mode is true
+    expect(el.darkMode).to.equal(false);
+  });
+
   it('Verify performUpdate called on popstate event', async () => {
-    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
     const performUpdate = stub(el, 'performUpdate');
 
     // dispatch popstate event
@@ -70,8 +84,8 @@ describe('application page', () => {
    * DOM unit tests
    */
 
-  it('display about-me page by default', async () => {
-    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+  it('Display about-me page by default', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
     
     expect(el).shadowDom.to.equal(`
     <side-bar></side-bar>
@@ -81,10 +95,9 @@ describe('application page', () => {
     `);
   });
 
-  it('display experience page for experience path', async () => {
-    const el = /** @type {ApplicationPage} */ (await fixture(appTemplate));
+  it('Display experience page for experience path', async () => {
+    const el = /** @type {ApplicationPage} */ (await fixture(_template));
 
-    // simulate navigating to experience page
     navigateToPath('experience');
 
     expect(el).shadowDom.to.equal(`
@@ -95,12 +108,11 @@ describe('application page', () => {
     `);
   });
 
-  it('display projects page for projects path', async () => {
+  it('Display projects page for projects path', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(html`
       <application-page></application-page>
     `));
 
-    // simulate navigating to experience page
     navigateToPath('projects');
 
     expect(el).shadowDom.to.equal(`
