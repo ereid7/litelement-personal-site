@@ -64,7 +64,7 @@ export class ApplicationPage extends LitElement {
       this.performUpdate();
     })
 
-    this.addEventListener("toggle-changed", this.onThemeChanged);
+    this.addEventListener('toggle-changed', this.onThemeChanged.bind(this));
   }
 
   onThemeChanged(e) {

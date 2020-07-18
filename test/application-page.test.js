@@ -48,6 +48,8 @@ describe('application page', () => {
 
   it('Verify darkMode set to false by default', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(_template));
+
+    // assert dark mode is false
     expect(el.darkMode).to.equal(false);
   });
 

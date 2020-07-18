@@ -4,10 +4,9 @@ import { LitElement, html, css, unsafeCSS } from 'lit-element';
 import { styles } from './css/toggle-button.css.js';
 
 export class ToggleButton extends LitElement {
-
   static get properties() {
     return {
-      darkMode: false
+      toggled: false
     };
   }
 
@@ -19,18 +18,18 @@ export class ToggleButton extends LitElement {
 
   constructor() {
     super();
-    this.darkMode = false;
+    this.toggled = false;
   }
 
   onChange(e) {
-    this.darkMode = e.target.checked;
+    this.toggled = e.target.checked;
     this.performUpdate();
     
-    let event = new CustomEvent('toggle-changed', { 
+    const event = new CustomEvent('toggle-changed', { 
       bubbles: true, 
       composed: true, 
-      detail: { darkMode: this.darkMode } 
-    }); 
+      detail: { darkMode: this.toggled } 
+    }) 
     this.dispatchEvent(event);
   }
 
@@ -38,7 +37,7 @@ export class ToggleButton extends LitElement {
     return html`
     <div className="toggleButton"> 
       <label class="form-switch">
-        <input id="darkMode" @change="${this.onChange}" type="checkbox">
+        <input id="toggle" @change="${this.onChange}" type="checkbox">
         <i></i></label>
       </body>
     </div> 

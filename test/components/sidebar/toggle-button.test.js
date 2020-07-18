@@ -14,7 +14,7 @@ const _template = html`<toggle-button></toggle-button>`
  * Helper Methods
  */
 const clickToggleButton = (element) => {
-  element.shadowRoot.getElementById('darkMode').click();
+  element.shadowRoot.getElementById('toggle').click();
 }
 
 describe('toggle button', () => {
@@ -23,19 +23,19 @@ describe('toggle button', () => {
    * Functionality unit tests
    */
 
-  it('Verify darkMode set to false by default', async () => {
+  it('Verify toggled set to false by default', async () => {
     const el = /** @type {ToggleButton */ (await fixture(_template));
 
-    // assert darkMode is false
-    expect(el.darkMode).to.equal(false);
+    // assert toggled is false
+    expect(el.toggled).to.equal(false);
   });
 
-  it('Verify darkMode set to true when toggled', async () => {
+  it('Verify toggled set to true when toggled', async () => {
     const el = /** @type {ToggleButton */ (await fixture(_template));
     clickToggleButton(el);
 
-    // assert darkMode is true
-    expect(el.darkMode).to.equal(true);
+    // assert toggled is true
+    expect(el.toggled).to.equal(true);
   });
 
   it('Verify onChange and performUpdate called when toggled', async () => {
@@ -56,7 +56,7 @@ describe('toggle button', () => {
     setTimeout(() => clickToggleButton(el));
     const { detail } = await oneEvent(el, 'toggle-changed');
 
-    // assert event darkMode is true
+    // assert event toggled is true
     expect(detail.darkMode).to.be.true;
   });
 
@@ -84,7 +84,7 @@ describe('toggle button', () => {
     expect(el).shadowDom.to.equal(`
     <div className="toggleButton"> 
       <label class="form-switch">
-        <input id="darkMode" type="checkbox">
+        <input id="toggle" type="checkbox">
         <i></i></label>
       </body>
     </div> 
