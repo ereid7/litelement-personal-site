@@ -20,6 +20,23 @@ describe('side bar', () => {
    * Functionality unit tests
    */
 
+  it('Verify darkMode set to false by default', async () => {
+    const el = /** @type {SideBar} */ (await fixture(_template));
+
+    // assert dark mode is false
+    expect(el.darkMode).to.equal(false);
+  });
+
+  it('Verify updatePage called with aboutme id when clicked', async () => {
+    const el = /** @type {SideBar} */ (await fixture(_template));
+    const updatePage = stub(el, 'updatePage')
+
+    el.shadowRoot.getElementById('aboutme').click();
+
+    // assert dark mode is false
+    expect(updatePage).to.have.calledWith('aboutme');
+  });
+
   /**
    * DOM unit tests
    */

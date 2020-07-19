@@ -13,8 +13,7 @@ export class Sidebar extends LitElement {
       darkMode: { type: Boolean },
       aboutMe: { type: Object },
       experience: { type: Object },
-      projects: { type: Object },
-      sideBarMap: { type: Object }
+      projects: { type: Object }
     };
   }
 
@@ -31,7 +30,10 @@ export class Sidebar extends LitElement {
 
   render() {
     return html`
-      <div class=${classMap(this.sideBarMap)}>
+      <div class=${classMap({
+        sidebar: true,
+        sidebarDark: this.darkMode
+      })}>
         <p class="sidebarheader">Evan Reid</p>
         <hr />
         <a id="aboutme" @click=${this.onClick} class=${this.isPageActive("aboutme", "")}>About Me</a>
@@ -48,11 +50,6 @@ export class Sidebar extends LitElement {
         </toggle-button>
       </div>
     `
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.sideBarMap = { sidebar: true, sidebarDark: false }
   }
 
   onClick(event) {
@@ -72,8 +69,7 @@ export class Sidebar extends LitElement {
   }
 
   updatePage(activePage) {
-     // update document path TODO correct defn - get name from const
-     window.history.pushState({}, "test", `/${activePage}`)
+     window.history.pushState({}, `${activePage}`, `/${activePage}`)
      this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
 
      this.performUpdate();
@@ -81,7 +77,7 @@ export class Sidebar extends LitElement {
 
   themeChanged(e) {
     this.darkMode = e.detail.darkMode;
-    this.sideBarMap = { sidebar: true, sidebarDark: this.darkMode }
+    this.performUpdate();
   }
 }
 
