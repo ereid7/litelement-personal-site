@@ -53,7 +53,7 @@ describe('application page', () => {
     expect(el.darkMode).to.equal(false);
   });
 
-  it('Verify update darkMode=true when toggle-changed event detail true', async () => {
+  it('Verify onThemeChanged updates darkMode=true when toggle-changed event detail true', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(_template));
 
     fireToggleChanged(el, true);
@@ -62,7 +62,7 @@ describe('application page', () => {
     expect(el.darkMode).to.equal(true);
   });
 
-  it('Verify update darkMode=false when toggle-changed event detail false', async () => {
+  it('Verify onThemeChanged updates darkMode=false when toggle-changed event detail false', async () => {
     const el = /** @type {ApplicationPage} */ (await fixture(_template));
     el.darkMode = true;
     fireToggleChanged(el, false);

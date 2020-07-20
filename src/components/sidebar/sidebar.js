@@ -36,9 +36,9 @@ export class Sidebar extends LitElement {
       })}>
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a id="aboutme" @click=${this.onClick} class=${this.isPageActive("aboutme", "")}>About Me</a>
-        <a id="experience" @click=${this.onClick} class=${this.isPageActive("experience")}>Experience</a>
-        <a id="projects" @click=${this.onClick} class=${this.isPageActive("projects")}>Projects</a>
+        <a id="aboutme" @click=${this.onClick} class=${classMap({ active: this.isPageActive("aboutme", "")})}>About Me</a>
+        <a id="experience" @click=${this.onClick} class=${classMap({ active: this.isPageActive("experience")})}>Experience</a>
+        <a id="projects" @click=${this.onClick} class=${classMap({ active: this.isPageActive("projects")})}>Projects</a>
         <hr />
         <div class="iconBar">
           <div class="siteIcons">${gitHubSvg}</div>
@@ -46,7 +46,7 @@ export class Sidebar extends LitElement {
         </div>
         <toggle-button 
           class="toggleButton" 
-          @toggle-changed="${this.themeChanged}"> 
+          @toggle-changed="${this.onThemeChanged}"> 
         </toggle-button>
       </div>
     `
@@ -55,6 +55,13 @@ export class Sidebar extends LitElement {
   onClick(event) {
     this.updatePage(event.target.id)
   }
+
+  updatePage(activePage) {
+    window.history.pushState({}, `${activePage}`, `/${activePage}`)
+    this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
+
+    this.performUpdate();
+ }
 
   isPageActive(...itemNames) {
     const path = window.location.pathname.substr(1);
@@ -65,17 +72,10 @@ export class Sidebar extends LitElement {
       }
     })
 
-    return classMap({ active: pageActive })
+    return pageActive;
   }
 
-  updatePage(activePage) {
-     window.history.pushState({}, `${activePage}`, `/${activePage}`)
-     this.dispatchEvent(new CustomEvent("popstate", { composed: true, bubbles: true }))
-
-     this.performUpdate();
-  }
-
-  themeChanged(e) {
+  onThemeChanged(e) {
     this.darkMode = e.detail.darkMode;
     this.performUpdate();
   }

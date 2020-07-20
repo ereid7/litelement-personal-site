@@ -1,6 +1,8 @@
-import { LitElement, html, css } from 'lit-element';
+import { html } from 'lit-element';
 import { BasePage } from './base-page';
 import { classMap } from 'lit-html/directives/class-map';
+
+// TODO create list of projects to add to this page
 
 export class ProjectsPage extends BasePage {
 
