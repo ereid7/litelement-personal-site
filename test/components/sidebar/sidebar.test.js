@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { gitHubSvg } from '../../../resources/icons/github.svg.js';
+import { linkedInSvg } from '../../../resources/icons/linkedin.svg.js';
 import { spy, stub } from 'sinon';
 
 import '../../../src/components/sidebar/sidebar.js';
@@ -173,4 +175,11 @@ describe('side bar', () => {
    * DOM unit tests
    */
 
+  it('Display toggle button template', async () => {
+    const el = /** @type {SideBar} */ (await fixture(_template));
+    clickSidebarItem(el, 'aboutme');
+    
+    // assert template is correct
+    expect(el).shadowDom.to.contain(`<a id="aboutme" class="active">About Me</a>`);
+  });
 });

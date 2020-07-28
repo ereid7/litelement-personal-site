@@ -14,6 +14,6 @@ const _aboutmeTemplate = html`<about-me></about-me>`
  * Helper Methods
  */
 
-describe('page tests', () => {
+// describe('page tests', () => {
 
-});
+// });
