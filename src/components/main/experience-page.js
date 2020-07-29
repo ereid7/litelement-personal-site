@@ -11,7 +11,9 @@ export class ExperiencePage extends BasePage {
   // TODO add logos
   render() {
     return html`
-    <div class=${classMap(this.contentClassMap)}>
+    <div class=${classMap({
+      dark: this.darkMode
+    })}>
       <div class="page-body">
         <h1 class="header">Experience</h1>
         <h4 class="header">Associate Software Engineer</h4>

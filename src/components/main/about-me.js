@@ -12,7 +12,9 @@ export class AboutMe extends BasePage {
 
   render() {
     return html`
-      <div class=${classMap(this.contentClassMap)}>
+      <div class=${classMap({
+      dark: this.darkMode
+    })}>
         <div id="aboutMeBody" class="page-body">
           <h1 class="header">Evan Reid</h1>
           <h4 class="subHeader">San Diego, CA</h4>

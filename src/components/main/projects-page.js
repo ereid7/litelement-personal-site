@@ -12,7 +12,9 @@ export class ProjectsPage extends BasePage {
 
   render() {
     return html`
-    <div class=${classMap(this.contentClassMap)}>
+    <div class=${classMap({
+      dark: this.darkMode
+    })}>
       <div class="page-body">
         <h1 class="header">Projects</h1>
         
