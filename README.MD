@@ -1,6 +1,8 @@
 # About Me Website 
 This project is an about-me and portfolio website created with lit-element.
 
+Currently hosted at: https://ereid.herokuapp.com
+
 
 ### Application Dependencies
 - lit-element
