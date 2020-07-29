@@ -1,6 +1,8 @@
 # About Me Website 
 This project is an about-me and portfolio website created with lit-element.
 
+![Node.js CI](https://github.com/ereid7/litelement-personal-site/workflows/Node.js%20CI/badge.svg)
+
 Currently hosted at: https://ereid.herokuapp.com
 
 
