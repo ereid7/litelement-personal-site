@@ -6,7 +6,7 @@ import { styles } from './css/toggle-button.css.js';
 export class ToggleButton extends LitElement {
   static get properties() {
     return {
-      toggled: false
+      toggled: { type: Boolean }
     };
   }
 

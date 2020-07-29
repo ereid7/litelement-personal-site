@@ -24,14 +24,14 @@ describe('toggle button', () => {
    */
 
   it('Verify toggled set to false by default', async () => {
-    const el = /** @type {ToggleButton */ (await fixture(_template));
+    const el = /** @type {ToggleButton} */ (await fixture(_template));
 
     // assert toggled is false
     expect(el.toggled).to.equal(false);
   });
 
   it('Verify toggled set to true when toggled', async () => {
-    const el = /** @type {ToggleButton */ (await fixture(_template));
+    const el = /** @type {ToggleButton} */ (await fixture(_template));
     clickToggleButton(el);
 
     // assert toggled is true
@@ -39,7 +39,7 @@ describe('toggle button', () => {
   });
 
   it('Verify onChange and performUpdate called when toggled', async () => {
-    const el = /** @type {ToggleButton */ (await fixture(_template));
+    const el = /** @type {ToggleButton} */ (await fixture(_template));
     const onChange = stub(el, 'dispatchEvent');
     const performUpdate = stub(el, 'performUpdate');
     clickToggleButton(el);
@@ -50,7 +50,7 @@ describe('toggle button', () => {
   });
 
   it('Verify toggle-changed event is fired when toggled', async () => {
-    const el = /** @type {ToggleButton */ (await fixture(_template));
+    const el = /** @type {ToggleButton} */ (await fixture(_template));
 
     // toggle
     setTimeout(() => clickToggleButton(el));
@@ -61,7 +61,7 @@ describe('toggle button', () => {
   });
 
   it('Verify toggle-changed event is fired with darkMode=false when toggled/untoggled', async () => {
-    const el = /** @type {ToggleButton */ (await fixture(_template));
+    const el = /** @type {ToggleButton} */ (await fixture(_template));
 
     // toggle
     clickToggleButton(el);
@@ -78,7 +78,7 @@ describe('toggle button', () => {
    */
 
   it('Display toggle button template', async () => {
-    const el = /** @type {ToggleButton} */ (await fixture(_template));
+    const el = /** @type {ToggleButton}} */ (await fixture(_template));
     
     // assert template is correct
     expect(el).shadowDom.to.equal(`

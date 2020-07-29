@@ -14,7 +14,16 @@ export class BasePage extends LitElement {
     };
   }
 
+  constructor() {
+    super();
+
+    this.darkMode = false;
+  }
+
   static get styles() {
-    return [unsafeCSS(styles)]
+    return [unsafeCSS(styles)];
   }
 }
+
+// define element for testing
+customElements.define('base-page', BasePage);
