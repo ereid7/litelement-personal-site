@@ -38,7 +38,7 @@ export class Sidebar extends LitElement {
         <hr />
         <a id="aboutme" @click=${this.onClick} class=${classMap({ active: this.isPageActive("aboutme", "")})}>About Me</a>
         <a id="experience" @click=${this.onClick} class=${classMap({ active: this.isPageActive("experience")})}>Experience</a>
-        <a id="projects" @click=${this.onClick} class=${classMap({ active: this.isPageActive("projects")})}>Projects</a>
+        <!-- <a id="projects" @click=${this.onClick} class=${classMap({ active: this.isPageActive("projects")})}>Projects</a> -->
         <hr />
         <div class="iconBar">
           <div class="siteIcons">${gitHubSvg}</div>

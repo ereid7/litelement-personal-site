@@ -46,8 +46,8 @@ export class ApplicationPage extends LitElement {
     switch (path) {
       case "experience":
         return html`<experience-page .darkMode="${this.darkMode}"></experience-page>`;
-      case "projects":
-        return html`<projects-page .darkMode="${this.darkMode}"></projects-page>`;
+      // case "projects":
+      //   return html`<projects-page .darkMode="${this.darkMode}"></projects-page>`;
       default:
         return html`<about-me .darkMode="${this.darkMode}"></about-me>`;
     }
