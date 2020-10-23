@@ -1,6 +1,7 @@
-import { html } from 'lit-element';
+import { html, css, svg } from 'lit-element';
 import { BasePage } from './base-page';
 import { classMap } from 'lit-html/directives/class-map';
+import { nuvaLogoSvg } from '../../../resources/icons/nuvalogo.svg';
 
 export class ExperiencePage extends BasePage {
 
@@ -17,6 +18,9 @@ export class ExperiencePage extends BasePage {
       <div class="page-body">
         <h1 class="header">Experience</h1>
         <h4 class="header">Associate Software Engineer</h4>
+        <div class="logo-icon">
+          ${nuvaLogoSvg}
+        </div>
         <h5 class="subHeader short">NuVasive</h4>
         <h5 class="subHeader short">Jan 2020 - Present</h4>
         <p>There are three reasons why Canada is one of the best countries in the world. First, Canada has an excellent health care system. All Canadians have access to medical services at a reasonable price. Second, Canada has a high standard of education. Students are taught by well-trained teachers and are encouraged to continue studying at university. Finally, Canada's cities are clean and efficiently managed. Canadian cities have many parks and lots of space for people to live. As a result, Canada is a desirable place to live.</p>
