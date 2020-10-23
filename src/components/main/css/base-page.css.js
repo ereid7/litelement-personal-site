@@ -27,6 +27,22 @@ p {
   transition: color .15s ease;
 }
 
+.section-header {
+  display: inline-block;
+  height: 30px;
+}
+
+.header-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header-title {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15px;
+}
+
 .short {
   margin-top: -20px;
   margin-left: 0px

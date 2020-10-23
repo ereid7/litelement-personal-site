@@ -144,7 +144,7 @@ export const styles = `
   .sidebar {
     box-shadow: 0px 1px 6px 0px #E3E6E8;
     width: 100%;
-    height: 150px;
+    padding-bottom: 10px;
     position: relative;
   }
 
