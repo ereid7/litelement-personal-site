@@ -28,11 +28,14 @@ export class ExperiencePage extends BasePage {
 
         <h4 class="header">Associate Software Engineer</h4>
         <h5 class="subHeader short">Jan 2020 - Present</h4>
-        <p>There are three reasons why Canada is one of the best countries in the world. First, Canada has an excellent health care system. All Canadians have access to medical services at a reasonable price. Second, Canada has a high standard of education. Students are taught by well-trained teachers and are encouraged to continue studying at university. Finally, Canada's cities are clean and efficiently managed. Canadian cities have many parks and lots of space for people to live. As a result, Canada is a desirable place to live.</p>
+        <p>Work on full stack development of spinal surgery platform, <a href="https://www.nuvasive.com/surgical-solutions/pulse/">Pulse</a>.
+        Create and maintain software tools used for simulation, testing, and globalization.
+        Technology stack includes a C#/.NET backend and a web based (LitElement) front-end.</p>
 
         <h4 class="header">Software Engineer Intern</h4>
         <h5 class="subHeader short">May 2019 - Aug 2019</h4>
-
+        <p>Worked on individual research project to determine the value of using machine learning models (PyTorch, SkLearn) to predict amplitude markers that are manually set by neurophysiologists.
+        Developed an internal web application for collecting neuromonitoring data used for training the models.</p>
         <hr>
 
         <div class="section-header">
@@ -44,6 +47,11 @@ export class ExperiencePage extends BasePage {
         
         <h4 class="header">Software Engineer Intern</h4>
         <h5 class="subHeader short">Jan 2018 - Oct 2018</h4>
+        <p>
+        Worked on full stack development of web application targeted towards legal professionals, <a href="https://legal.thomsonreuters.com/en/insights/articles/connect-the-business-and-practice-of-law-panoramic">Panoramic</a>. 
+        Participated in six week agile development training program led by an agile coach.
+        Technology stack includes Java backend and web based (Angular) front-end.
+        </p>
       </div>
 
       <footer-page></footer-page>

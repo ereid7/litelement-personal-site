@@ -15,7 +15,8 @@ export const styles = `
 
 
 p {
-  font-size: 16px;
+  font-size: 14px;
+  margin-top: -10px;
 }
 
 .subHeader {
@@ -62,7 +63,7 @@ a {
 
 hr {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: 1px solid;
   border-color: #E3E6E8;
 
