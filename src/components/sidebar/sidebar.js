@@ -8,6 +8,9 @@ import { styles } from './css/sidebar.css.js';
 
 export class Sidebar extends LitElement {
 
+  githubUrl = "https://github.com/ereid7";
+  linkedinUrl = "https://www.linkedin.com/in/evan-reid-51703a123/";
+
   static get properties() {
     return {
       darkMode: { type: Boolean },
@@ -36,13 +39,17 @@ export class Sidebar extends LitElement {
       })}>
         <p class="sidebarheader">Evan Reid</p>
         <hr />
-        <a id="aboutme" @click=${this.onClick} class=${classMap({ active: this.isPageActive("aboutme", "")})}>About Me</a>
-        <a id="experience" @click=${this.onClick} class=${classMap({ active: this.isPageActive("experience")})}>Experience</a>
+        <a id="aboutme" @click=${this.onClick} class="sidebar-item ${classMap({ active: this.isPageActive("aboutme", "")})}">About Me</a>
+        <a id="experience" @click=${this.onClick} class="sidebar-item ${classMap({ active: this.isPageActive("experience")})}">Experience</a>
         <!-- <a id="projects" @click=${this.onClick} class=${classMap({ active: this.isPageActive("projects")})}>Projects</a> -->
         <hr />
         <div class="iconBar">
-          <div class="siteIcons">${gitHubSvg}</div>
-          <div class="siteIcons">${linkedInSvg}</div>
+          <a class="sidebar-icon" href="${this.githubUrl}">
+            <div class="siteIcons">${gitHubSvg}</div>
+          </a>
+          <a class="sidebar-icon" href="${this.linkedinUrl}">
+            <div class="siteIcons" @click="${this.onClickLinkedin}">${linkedInSvg}</div>
+          </a>
         </div>
         <toggle-button 
           class="toggleButton" 
