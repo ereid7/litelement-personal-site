@@ -96,4 +96,22 @@ hr {
     margin-left: 20px;
     margin-right: 20px;
   }
+}
+
+@media screen and (max-width: 700px) {
+  p {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
 }`;

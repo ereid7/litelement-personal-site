@@ -28,15 +28,14 @@ export class ExperiencePage extends BasePage {
 
         <h4 class="header">Associate Software Engineer</h4>
         <h5 class="subHeader short">Jan 2020 - Present</h4>
-        <p>Work on full stack development of spinal surgery platform, <a href="https://www.nuvasive.com/surgical-solutions/pulse/">Pulse</a>.
-        Create and maintain software tools used for simulation, testing, and globalization.
+        <p>Responsible for full stack development of spinal surgery platform, <a href="https://www.nuvasive.com/surgical-solutions/pulse/">Pulse</a>.
+        Develop and maintain tools used for hardware simulation, devops, and testing.
         Technology stack includes a C#/.NET backend and a web based (LitElement) front-end.</p>
 
         <h4 class="header">Software Engineer Intern</h4>
         <h5 class="subHeader short">May 2019 - Aug 2019</h4>
-        <p>Worked on individual research project to determine the value of using machine learning models (PyTorch, SkLearn) to predict amplitude markers that are manually set by neurophysiologists.
+        <p>Worked on individual internship project to determine the value of using machine learning models (PyTorch, SkLearn) to predict amplitude markers set by neurophysiologists.
         Developed an internal web application for collecting neuromonitoring data used for training the models.</p>
-        <hr>
 
         <div class="section-header">
           <div class="header-icon" style="opacity: 0.8">
