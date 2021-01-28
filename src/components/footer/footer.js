@@ -19,7 +19,7 @@ export class Footer extends LitElement {
   render() {
     return html`
     <div class="footer">
-      © Copyright 2020, Evan Reid
+      © Copyright 2021, Evan Reid
     </div>
     `
   }

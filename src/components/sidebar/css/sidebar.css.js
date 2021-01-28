@@ -32,7 +32,7 @@ export const styles = `
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-
+  font-weight: bold;
   -webkit-transition: color .15s ease;
   -ms-transition: color .15s ease;
   transition: color .15s ease;
@@ -150,6 +150,7 @@ export const styles = `
 
   .sidebar .sidebar-item {
     float: none;
+    font-size: 20px;
   }
 
   div.content {margin-left: 0;}
